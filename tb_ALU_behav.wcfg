@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_ALU_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="alu_components_pack" />
+            <top_module name="tb_ALU" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="9.738713 us"></ZoomStartTime>
+      <ZoomEndTime time="17.658714 us"></ZoomEndTime>
+      <Cursor1Time time="11.058713 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="178"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="27" />
+   <wvobject fp_name="/tb_ALU/A" type="array">
+      <obj_property name="ElementShortName">A[7:0]</obj_property>
+      <obj_property name="ObjectShortName">A[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/B" type="array">
+      <obj_property name="ElementShortName">B[7:0]</obj_property>
+      <obj_property name="ObjectShortName">B[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/FN" type="array">
+      <obj_property name="ElementShortName">FN[3:0]</obj_property>
+      <obj_property name="ObjectShortName">FN[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/result" type="array">
+      <obj_property name="ElementShortName">result[7:0]</obj_property>
+      <obj_property name="ObjectShortName">result[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/overflow" type="logic">
+      <obj_property name="ElementShortName">overflow</obj_property>
+      <obj_property name="ObjectShortName">overflow</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/sign" type="logic">
+      <obj_property name="ElementShortName">sign</obj_property>
+      <obj_property name="ObjectShortName">sign</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/start_kb_clk" type="logic">
+      <obj_property name="ElementShortName">start_kb_clk</obj_property>
+      <obj_property name="ObjectShortName">start_kb_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/kb_clk_to_dut" type="logic">
+      <obj_property name="ElementShortName">kb_clk_to_dut</obj_property>
+      <obj_property name="ObjectShortName">kb_clk_to_dut</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/tb_seg_en" type="array">
+      <obj_property name="ElementShortName">tb_seg_en[3:0]</obj_property>
+      <obj_property name="ObjectShortName">tb_seg_en[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/tb_clk" type="logic">
+      <obj_property name="ElementShortName">tb_clk</obj_property>
+      <obj_property name="ObjectShortName">tb_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/start_tb" type="logic">
+      <obj_property name="ElementShortName">start_tb</obj_property>
+      <obj_property name="ObjectShortName">start_tb</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/tb_rst" type="logic">
+      <obj_property name="ElementShortName">tb_rst</obj_property>
+      <obj_property name="ObjectShortName">tb_rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/sys_rst" type="logic">
+      <obj_property name="ElementShortName">sys_rst</obj_property>
+      <obj_property name="ObjectShortName">sys_rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/seven_seg_num" type="array">
+      <obj_property name="ElementShortName">seven_seg_num[6:0]</obj_property>
+      <obj_property name="ObjectShortName">seven_seg_num[6:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/period" type="other">
+      <obj_property name="ElementShortName">period</obj_property>
+      <obj_property name="ObjectShortName">period</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/binary_in" type="array">
+      <obj_property name="ElementShortName">binary_in[7:0]</obj_property>
+      <obj_property name="ObjectShortName">binary_in[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/counter" type="array">
+      <obj_property name="ElementShortName">counter[3:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[3:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/counter" type="array">
+      <obj_property name="ElementShortName">counter[3:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/count_done" type="logic">
+      <obj_property name="ElementShortName">count_done</obj_property>
+      <obj_property name="ObjectShortName">count_done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/Binary_in_buff" type="array">
+      <obj_property name="ElementShortName">Binary_in_buff[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Binary_in_buff[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/Binary_in_buff_next" type="array">
+      <obj_property name="ElementShortName">Binary_in_buff_next[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Binary_in_buff_next[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/BCD_out_buff" type="array">
+      <obj_property name="ElementShortName">BCD_out_buff[9:0]</obj_property>
+      <obj_property name="ObjectShortName">BCD_out_buff[9:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/BCD_out_buff_next" type="array">
+      <obj_property name="ElementShortName">BCD_out_buff_next[9:0]</obj_property>
+      <obj_property name="ObjectShortName">BCD_out_buff_next[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/BCD_out_final_reg" type="array">
+      <obj_property name="ElementShortName">BCD_out_final_reg[9:0]</obj_property>
+      <obj_property name="ObjectShortName">BCD_out_final_reg[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/BCD_out_final_reg_next" type="array">
+      <obj_property name="ElementShortName">BCD_out_final_reg_next[9:0]</obj_property>
+      <obj_property name="ObjectShortName">BCD_out_final_reg_next[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/BCD_out" type="array">
+      <obj_property name="ElementShortName">BCD_out[9:0]</obj_property>
+      <obj_property name="ObjectShortName">BCD_out[9:0]</obj_property>
+   </wvobject>
+</wave_config>

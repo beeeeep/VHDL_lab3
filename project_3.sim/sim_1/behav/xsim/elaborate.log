@@ -1,0 +1,21 @@
+Vivado Simulator v2021.1
+Copyright 1986-1999, 2001-2021 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2021.1/bin/unwrapped/win64.o/xelab.exe -wto 8ec574a92b7e4a72807129ffe1e8a4d0 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot tb_ALU_behav xil_defaultlib.tb_ALU -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package xil_defaultlib.alu_components_pack
+Compiling architecture behavioral of entity xil_defaultlib.seven_seg_driver [seven_seg_driver_default]
+Compiling architecture structural of entity xil_defaultlib.binary2BCD [binary2bcd_default]
+Compiling architecture structural of entity xil_defaultlib.ALU_top [alu_top_default]
+Compiling architecture structural of entity xil_defaultlib.tb_alu
+Built simulation snapshot tb_ALU_behav

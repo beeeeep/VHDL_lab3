@@ -33,6 +33,7 @@ architecture behavioral of ALU is
        signal  Mod3_reg_next: std_logic_vector (7 downto 0);
        
      signal Mod3_enable: std_logic;
+   signal  Mod3_signed_enable: std_logic;
    signal  result_ready :  std_logic; 
     
     -- SIGNAL DEFINITIONS HERE IF NEEDED
@@ -65,10 +66,12 @@ begin
             when "0100" => --Unsigned A mod 3
             --    result (1 downto 0)<= regA(1 downto 0); 
             --    result (7 downto 2)<="000000";
+            Mod3_signed_enable<='0';
             Mod3_enable<='1';
             if(count_done='1') then
             result<=Mod3_reg;
             result_ready<='1';
+            sign<='0';      
             else
             result<="00000000";
             result_ready<='0';
@@ -132,17 +135,28 @@ begin
                     result<=RR xor "01111111"+1;
                 end if;
             when "1100" => --Signed A mod 3
-                result (1 downto 0)<= regA(1 downto 0);
-                result (7 downto 2)<="000000";
-                if(regA(7) = '1') then
-                    sign<='1';
-                else
-                    sign<='0';
-                end if;
+            --    result (1 downto 0)<= regA(1 downto 0);
+            --    result (7 downto 2)<="000000";
+             --   if(regA(7) = '1') then
+            --        sign<='1';
+             --   else
+             --       sign<='0';
+           --     end if;
+             Mod3_enable<='1';
+             Mod3_signed_enable<='1';                  
+                     if(count_done='1') then
+                     result<=Mod3_reg;
+                     result_ready<='1';
+                     sign<='0';
+                     else
+                     result<="00000000";
+                     result_ready<='0';   
+                     end if;   
             when others =>
                 overflow <= '0';
                 sign<='0';
                 result<="00000000";
+                result_ready<='0';
         end case;
         end if;
     end process;
@@ -202,10 +216,11 @@ begin
              end if;
     end process;
 
-   Mod3_combinational: process(clk,reset,Mod3_reg,FN)--counter register, used to count the conversion's steps, counts up to 9
+   Mod3_combinational: process(clk,reset,Mod3_reg,FN,Mod3_signed_enable)--counter register, used to count the conversion's steps, counts up to 9
       begin   
              if reset='1' then
-                Mod3_reg_next<=regA;      
+                Mod3_reg_next<="00000000";    
+                  
                else
                  if( Mod3_enable='1') then  
                  
@@ -217,7 +232,12 @@ begin
                   
                     Mod3_reg_next<=Mod3_reg-Mod3_B;
                  else
+                   if(Mod3_signed_enable='1')then
+                                       
+                    Mod3_reg_next<=not(regA)+1;
+                    else
                     Mod3_reg_next<=regA;
+                    end if;
                     Mod3_B<="00000000";
                  end if;
               end if;

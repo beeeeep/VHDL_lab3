@@ -89,7 +89,7 @@ begin
    end if;      
 end process;
 
-Output_buffer_combinational: process(reset,count_done,BCD_out_buffer) -- output buffer, used to store the output signal until the next conversion is ready
+Output_buffer_combinational: process(reset,count_done,BCD_out_buffer,BCD_sreg) -- output buffer, used to store the output signal until the next conversion is ready
    begin   
           if reset='1' then
              BCD_out_buffer_next<="0000000000";

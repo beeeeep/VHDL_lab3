@@ -136,15 +136,15 @@ begin  -- structural
          "0001" after 1 * period,             -- Pass B
          "0000" after 2 * period,             -- Pass A
          "0001" after 3 * period,             -- Pass B
-         "0100" after 4 * period,             -- Pass unsigned A + B
-         "0100" after 5 * period,             -- Pass unsigned A - B  
-         "0100" after 6 * period,             -- Pass unsigned A - B
-         "0100" after 7 * period,             -- Pass unsigned A + B
-         "0100" after 8 * period,             -- Pass unsigned A - B
-         "0100" after 9 * period,             -- Pass unsigned max(A, B)
-         "0100" after 10 * period,            -- Pass signed A + B
-         "0100" after 11 * period,            -- Pass signed A - B
-         "0100" after 12 * period,            -- Pass signed max(A, B)
+         "1100" after 4 * period,             -- Pass unsigned A + B
+         "1100" after 5 * period,             -- Pass unsigned A - B  
+         "1100" after 6 * period,             -- Pass unsigned A - B
+         "1100" after 7 * period,             -- Pass unsigned A + B
+         "1100" after 8 * period,             -- Pass unsigned A - B
+         "1100" after 9 * period,             -- Pass unsigned max(A, B)
+         "1100" after 10 * period,            -- Pass signed A + B
+         "1100" after 11 * period,            -- Pass signed A - B
+         "1100" after 12 * period,            -- Pass signed max(A, B)
          "1111" after 13 * period;            -- Invalid input command
 
 end structural;

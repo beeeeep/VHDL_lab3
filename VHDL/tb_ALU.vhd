@@ -10,15 +10,18 @@ end tb_ALU;
 
 architecture structural of tb_ALU is
 
---   component ALU
---   port ( A          : in  std_logic_vector(7 downto 0);
---          B          : in  std_logic_vector(7 downto 0);
---          FN         : in  std_logic_vector(3 downto 0);
---          result     : out std_logic_vector(7 downto 0);
---          overflow   : out std_logic;
---          sign       : out std_logic
---        );
---   end component;
+   component ALU
+   port (
+          clk        : in  std_logic;
+           reset      : in  std_logic;
+             A          : in  std_logic_vector(7 downto 0);
+          B          : in  std_logic_vector(7 downto 0);
+          FN         : in  std_logic_vector(3 downto 0);
+          result     : out std_logic_vector(7 downto 0);
+          overflow   : out std_logic;
+          sign       : out std_logic
+        );
+   end component;
 component ALU_top
   port (
           clk        : in  std_logic;
@@ -49,25 +52,28 @@ end component;
     
 begin  -- structural
    
---   ALU_inst: ALU
---   port map ( A         => A,
---              B         => B,
---              FN        => FN,
---              result    => result,
---              sign      => sign,
---              overflow  => overflow
---            );
+   ALU_inst: ALU
+   port map (  
+            clk     => clk,
+              reset   => sys_rst,
+                A         => A,
+              B         => B,
+              FN        => FN,
+              result    => result,
+              sign      => sign,
+              overflow  => overflow
+            );
 
- ALU_top_inst: ALU_top
-  port map ( 
-        clk=>clk,
-         reset=>sys_rst,
-         b_Enter=>'0',
-         b_Sign=>'0',
-         input=>"00011010",
-         seven_seg=>seven_seg_num,
-         anode=>tb_seg_en
-   );
+--    ALU_top_inst: ALU_top
+--        port map (
+--            clk=>clk,
+--            reset=>sys_rst,
+--            b_Enter=>'0',
+--            b_Sign=>'0',
+--            input=>"00011010",
+--            seven_seg=>seven_seg_num,
+--            anode=>tb_seg_en
+--        );
 
 
 

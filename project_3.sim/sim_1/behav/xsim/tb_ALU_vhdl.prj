@@ -1,9 +1,6 @@
 # compile vhdl design source files
 vhdl xil_defaultlib  \
-"../../../../VHDL/7SegDriver.vhd" \
-"../../../../VHDL/ALU_components.vhd" \
-"../../../../VHDL/ALU_top.vhd" \
-"../../../../VHDL/binary2BCD.vhd" \
+"../../../../VHDL/ALU.vhd" \
 "../../../../VHDL/tb_ALU.vhd" \
 
 # Do not sort compile order

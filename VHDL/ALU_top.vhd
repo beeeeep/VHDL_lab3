@@ -10,7 +10,7 @@ entity ALU_top is
           b_Enter    : in  std_logic;
           b_Sign     : in  std_logic;
           input      : in  std_logic_vector(7 downto 0);
-          seven_seg  : out std_logic_vector(6 downto 0);
+          seven_seg  : out std_logic_vector(7 downto 0);
           anode      : out std_logic_vector(3 downto 0)
         );
 end ALU_top;
@@ -42,8 +42,8 @@ architecture structural of ALU_top is
 
 component ALU is
    port (
-          clk       : in  std_logic;
-          reset     : in  std_logic;  
+      --    clk       : in  std_logic;
+      --    reset     : in  std_logic;  
           A          : in  std_logic_vector (7 downto 0);   -- Input A
           B          : in  std_logic_vector (7 downto 0);   -- Input B
           FN         : in  std_logic_vector (3 downto 0);   -- ALU functions provided by the ALU_Controller (see the lab manual)
@@ -60,7 +60,7 @@ component seven_seg_driver is
           sign          : in  std_logic;
           overflow      : in  std_logic;
           DIGIT_ANODE   : out std_logic_vector(3 downto 0);
-          SEGMENT       : out std_logic_vector(6 downto 0)
+          SEGMENT       : out std_logic_vector(7 downto 0)
         );
 end component;
 
@@ -84,7 +84,7 @@ end component;
 	signal overflow : std_logic;                       -- '1' if overflow ocurres, '0' otherwise 
 	signal sign : std_logic;         
     signal DIGIT_ANODE : std_logic_vector(3 downto 0);
-    signal SEGMENT : std_logic_vector(6 downto 0);
+    signal SEGMENT : std_logic_vector(7 downto 0);
     signal BCD_out  :std_logic_vector(9 downto 0);
 begin
     ALU_ctrl_inst : ALU_ctrl
@@ -109,8 +109,8 @@ begin
 	     
 	     ALU_inst : ALU
     port map (
-            clk     => clk,
-            reset   => reset,
+          -- clk     => clk,
+          --  reset   => reset,
             A       => A,  
             B       => B,
             result  => result,

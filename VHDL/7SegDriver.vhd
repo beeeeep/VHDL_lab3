@@ -15,7 +15,7 @@ end seven_seg_driver;
 
 architecture behavioral of seven_seg_driver is
 
-    signal Seg_reg_0,Seg_reg_1,Seg_reg_2,Seg_reg_3:  std_logic_vector(6 downto 0);
+    signal Seg_reg_0,Seg_reg_1,Seg_reg_2,Seg_reg_3:  std_logic_vector(7 downto 0);
     signal counter,counter_next:unsigned(1 downto 0);
     signal counter_delay,counter_delay_next:unsigned(9 downto 0);
 begin
@@ -91,17 +91,17 @@ begin
 
     Bin_to_Seg_1: process(BCD_digit)
     begin
-        case BCD_digit(8 downto 9) is
+        case BCD_digit(9 downto 8) is
             when "00" =>
-                Seg_reg_2 <= "11000000";
+                Seg_reg_1 <= "11000000";
             when "01" =>
-                Seg_reg_2 <= "11111001";
+                Seg_reg_1 <= "11111001";
             when "10" =>
-                Seg_reg_2 <= "10100100";
+                Seg_reg_1 <= "10100100";
             when "11" =>
-                Seg_reg_2 <= "10110000";
+                Seg_reg_1 <= "10110000";
             when others =>
-                Seg_reg_2 <= "10000110";
+                Seg_reg_1 <= "10000110";
         end case;
     end process;
 

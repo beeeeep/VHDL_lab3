@@ -5,20 +5,21 @@
    <db_ref_list>
       <db_ref path="tb_ALU_behav.wdb" id="1">
          <top_modules>
+            <top_module name="alu_components_pack" />
             <top_module name="tb_ALU" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="6.691167 us"></ZoomStartTime>
-      <ZoomEndTime time="23.091168 us"></ZoomEndTime>
-      <Cursor1Time time="10.671167 us"></Cursor1Time>
+      <ZoomStartTime time="7.700000 us"></ZoomStartTime>
+      <ZoomEndTime time="24.500001 us"></ZoomEndTime>
+      <Cursor1Time time="9.980000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="150"></NameColumnWidth>
+      <NameColumnWidth column_width="130"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="23" />
+   <WVObjectSize size="27" />
    <wvobject fp_name="/tb_ALU/A" type="array">
       <obj_property name="ElementShortName">A[7:0]</obj_property>
       <obj_property name="ObjectShortName">A[7:0]</obj_property>
@@ -36,38 +37,6 @@
    <wvobject fp_name="/tb_ALU/result" type="array">
       <obj_property name="ElementShortName">result[7:0]</obj_property>
       <obj_property name="ObjectShortName">result[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_inst/regA" type="array">
-      <obj_property name="ElementShortName">regA[7:0]</obj_property>
-      <obj_property name="ObjectShortName">regA[7:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_inst/regB" type="array">
-      <obj_property name="ElementShortName">regB[7:0]</obj_property>
-      <obj_property name="ObjectShortName">regB[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_inst/Mod3_reg" type="array">
-      <obj_property name="ElementShortName">Mod3_reg[7:0]</obj_property>
-      <obj_property name="ObjectShortName">Mod3_reg[7:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_inst/Mod3_reg_next" type="array">
-      <obj_property name="ElementShortName">Mod3_reg_next[7:0]</obj_property>
-      <obj_property name="ObjectShortName">Mod3_reg_next[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_inst/Mod3_enable" type="logic">
-      <obj_property name="ElementShortName">Mod3_enable</obj_property>
-      <obj_property name="ObjectShortName">Mod3_enable</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_inst/counter" type="array">
-      <obj_property name="ElementShortName">counter[7:0]</obj_property>
-      <obj_property name="ObjectShortName">counter[7:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_inst/Mod3_B" type="array">
-      <obj_property name="ElementShortName">Mod3_B[7:0]</obj_property>
-      <obj_property name="ObjectShortName">Mod3_B[7:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_ALU/overflow" type="logic">
       <obj_property name="ElementShortName">overflow</obj_property>
@@ -110,11 +79,55 @@
       <obj_property name="ObjectShortName">sys_rst</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_ALU/seven_seg_num" type="array">
-      <obj_property name="ElementShortName">seven_seg_num[6:0]</obj_property>
-      <obj_property name="ObjectShortName">seven_seg_num[6:0]</obj_property>
+      <obj_property name="ElementShortName">seven_seg_num[7:0]</obj_property>
+      <obj_property name="ObjectShortName">seven_seg_num[7:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_ALU/period" type="other">
       <obj_property name="ElementShortName">period</obj_property>
       <obj_property name="ObjectShortName">period</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/FN" type="array">
+      <obj_property name="ElementShortName">FN[3:0]</obj_property>
+      <obj_property name="ObjectShortName">FN[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/enter_out" type="logic">
+      <obj_property name="ElementShortName">enter_out</obj_property>
+      <obj_property name="ObjectShortName">enter_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/sign_out" type="logic">
+      <obj_property name="ElementShortName">sign_out</obj_property>
+      <obj_property name="ObjectShortName">sign_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/enter" type="logic">
+      <obj_property name="ElementShortName">enter</obj_property>
+      <obj_property name="ObjectShortName">enter</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/sign" type="logic">
+      <obj_property name="ElementShortName">sign</obj_property>
+      <obj_property name="ObjectShortName">sign</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/sign" type="logic">
+      <obj_property name="ElementShortName">sign</obj_property>
+      <obj_property name="ObjectShortName">sign</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/FN_buffer" type="array">
+      <obj_property name="ElementShortName">FN_buffer[3:0]</obj_property>
+      <obj_property name="ObjectShortName">FN_buffer[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/FN_next" type="array">
+      <obj_property name="ElementShortName">FN_next[3:0]</obj_property>
+      <obj_property name="ObjectShortName">FN_next[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/Debouncer_B_inst/button_in" type="logic">
+      <obj_property name="ElementShortName">button_in</obj_property>
+      <obj_property name="ObjectShortName">button_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/Debouncer_B_inst/button_out" type="logic">
+      <obj_property name="ElementShortName">button_out</obj_property>
+      <obj_property name="ObjectShortName">button_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/Debouncer_A_inst/count" type="array">
+      <obj_property name="ElementShortName">count[2:0]</obj_property>
+      <obj_property name="ObjectShortName">count[2:0]</obj_property>
    </wvobject>
 </wave_config>

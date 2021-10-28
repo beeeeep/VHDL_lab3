@@ -86,8 +86,11 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
   C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/7SegDriver.vhd
+  C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU.vhd
   C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_components.vhd
+  C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_ctrl.vhd
   C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/binary2BCD.vhd
+  C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd
   C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_top.vhd
 }
 OPTRACE "Adding files" END { }

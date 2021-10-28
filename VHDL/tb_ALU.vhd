@@ -29,7 +29,7 @@ component ALU_top
          b_Enter    : in  std_logic;
          b_Sign     : in  std_logic;
          input      : in  std_logic_vector(7 downto 0);
-         seven_seg  : out std_logic_vector(6 downto 0);
+         seven_seg  : out std_logic_vector(7 downto 0);
          anode      : out std_logic_vector(3 downto 0)
        );
 end component;
@@ -41,39 +41,40 @@ end component;
    signal result     : std_logic_vector(7 downto 0);
    signal overflow   : std_logic;
    signal sign       : std_logic;
+   signal enter      : std_logic;
    signal start_kb_clk, kb_clk_to_dut : std_logic := '0'; 
    signal tb_seg_en	  : std_logic_vector(3 downto 0);
    signal tb_clk, clk : std_logic := '0';
    constant period   : time := 2500 ns;
    signal start_tb : std_logic := '0'; 
    signal tb_rst, sys_rst : std_logic := '0'; 
-   signal seven_seg_num:  std_logic_vector(6 downto 0); 
-
+   signal seven_seg_num:  std_logic_vector(7 downto 0); 
+        
     
 begin  -- structural
    
-   ALU_inst: ALU
-   port map (  
-            clk     => clk,
-              reset   => sys_rst,
-                A         => A,
-              B         => B,
-              FN        => FN,
-              result    => result,
-              sign      => sign,
-              overflow  => overflow
-            );
+--   ALU_inst: ALU
+--   port map (  
+--            clk     => clk,
+--              reset   => sys_rst,
+--                A         => A,
+--              B         => B,
+--              FN        => FN,
+--              result    => result,
+--              sign      => sign,
+--              overflow  => overflow
+--            );
 
---    ALU_top_inst: ALU_top
---        port map (
---            clk=>clk,
---            reset=>sys_rst,
---            b_Enter=>'0',
---            b_Sign=>'0',
---            input=>"00011010",
---            seven_seg=>seven_seg_num,
---            anode=>tb_seg_en
---        );
+    ALU_top_inst: ALU_top
+        port map (
+            clk=>clk,
+            reset=>sys_rst,
+            b_Enter=>enter,
+            b_Sign=>sign,
+            input=>A,
+            seven_seg=>seven_seg_num,
+            anode=>tb_seg_en
+        );
 
 
 
@@ -99,10 +100,28 @@ begin  -- structural
 
 
 
+sign <= '0',                    -- B = 3
+'0' after 1 * period,   -- B = 3
+'0' after 2 * period,   -- B = 145
+'1' after 3 * period,   -- B = 124
+'0' after 4 * period,   -- B = 249
+'1' after 5 * period,   -- B = 105
+'0' after 6 * period,   -- B = 35
+'1' after 7 * period,   -- B = 104
+'1' after 8 * period,   -- B = A 
+'1' after 9 * period;   -- B = A A 
 
 
-
-
+enter <= '1',                    -- B = 3
+'1' after 1 * period,   -- B = 3
+'0' after 2 * period,   -- B = 145
+'1' after 3 * period,   -- B = 124
+'0' after 4 * period,   -- B = 249
+'1' after 5 * period,   -- B = 105
+'0' after 6 * period,   -- B = 35
+'1' after 7 * period,   -- B = 104
+'0' after 8 * period,   -- B = A 
+'1' after 9 * period;   -- B = A A 
 
 
    

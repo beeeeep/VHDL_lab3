@@ -55,7 +55,7 @@ end debouncer;
 
 architecture behavioral of debouncer is
 
-   signal count      : unsigned(19 downto 0);  -- Range to count 20ms with 50 MHz clock
+   signal count      : unsigned(2 downto 0);  -- Range to count 20ms with 50 MHz clock
    signal button_tmp : std_logic;
    
 begin
@@ -71,6 +71,8 @@ begin
          
          if (count = 0) then
             button_out <= button_tmp;
+         else
+         button_out <= '0';
          end if;
       end if;
   end if;

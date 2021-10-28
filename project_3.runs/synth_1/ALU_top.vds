@@ -2,8 +2,8 @@
 # Vivado v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Thu Oct 28 02:44:15 2021
-# Process ID: 16960
+# Start of session at: Thu Oct 28 13:52:59 2021
+# Process ID: 17000
 # Current directory: C:/Users/Anestman/Documents/VLSI_labs/project_3/project_3.runs/synth_1
 # Command line: vivado.exe -log ALU_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source ALU_top.tcl
 # Log file: C:/Users/Anestman/Documents/VLSI_labs/project_3/project_3.runs/synth_1/ALU_top.vds
@@ -17,23 +17,22 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 20064
+INFO: [Synth 8-7075] Helper process launched with PID 14916
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'ALU_top' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_top.vhd:18]
 INFO: [Synth 8-3491] module 'ALU_ctrl' declared at 'C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_ctrl.vhd:5' bound to instance 'ALU_ctrl_inst' of component 'ALU_ctrl' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_top.vhd:90]
 INFO: [Synth 8-638] synthesizing module 'ALU_ctrl' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_ctrl.vhd:16]
-INFO: [Synth 8-3491] module 'debouncer' declared at 'C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_components.vhd:48' bound to instance 'Debouncer_enter_inst' of component 'debouncer' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_ctrl.vhd:36]
+INFO: [Synth 8-3491] module 'debouncer' declared at 'C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_components.vhd:48' bound to instance 'Debouncer_enter_inst' of component 'debouncer' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_ctrl.vhd:38]
 INFO: [Synth 8-638] synthesizing module 'debouncer' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_components.vhd:56]
 INFO: [Synth 8-256] done synthesizing module 'debouncer' (1#1) [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_components.vhd:56]
-INFO: [Synth 8-3491] module 'debouncer' declared at 'C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_components.vhd:48' bound to instance 'Debouncer_B_inst' of component 'debouncer' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_ctrl.vhd:44]
-WARNING: [Synth 8-614] signal 'sign_enabled' is read in the process but is not in the sensitivity list [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_ctrl.vhd:112]
+INFO: [Synth 8-3491] module 'debouncer' declared at 'C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_components.vhd:48' bound to instance 'Debouncer_B_inst' of component 'debouncer' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_ctrl.vhd:46]
 INFO: [Synth 8-256] done synthesizing module 'ALU_ctrl' (2#1) [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_ctrl.vhd:16]
 INFO: [Synth 8-3491] module 'regUpdate' declared at 'C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:7' bound to instance 'regUpdate_inst' of component 'regUpdate' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_top.vhd:100]
 INFO: [Synth 8-638] synthesizing module 'regUpdate' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:17]
-WARNING: [Synth 8-614] signal 'Reg_A' is read in the process but is not in the sensitivity list [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:44]
-WARNING: [Synth 8-614] signal 'Reg_B' is read in the process but is not in the sensitivity list [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:44]
+WARNING: [Synth 8-614] signal 'Reg_A' is read in the process but is not in the sensitivity list [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:39]
+WARNING: [Synth 8-614] signal 'Reg_B' is read in the process but is not in the sensitivity list [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:39]
 INFO: [Synth 8-256] done synthesizing module 'regUpdate' (3#1) [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:17]
 INFO: [Synth 8-3491] module 'ALU' declared at 'C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU.vhd:7' bound to instance 'ALU_inst' of component 'ALU' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_top.vhd:110]
 INFO: [Synth 8-638] synthesizing module 'ALU' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU.vhd:17]
@@ -66,18 +65,18 @@ WARNING: [Synth 8-614] signal 'overflow' is read in the process but is not in th
 INFO: [Synth 8-256] done synthesizing module 'seven_seg_driver' (6#1) [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/7SegDriver.vhd:16]
 INFO: [Synth 8-256] done synthesizing module 'ALU_top' (7#1) [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_top.vhd:18]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1136.531 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -86,42 +85,41 @@ Parsing XDC File [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/Nexys4Mas
 Finished Parsing XDC File [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/Nexys4Master.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1136.531 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.081 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Finished Constraint Validation : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'FN_buffer_reg' in module 'ALU_ctrl'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
-                 iSTATE5 |                              000 |                             0000
-                  iSTATE |                              001 |                             0001
-                 iSTATE0 |                              010 |                             0010
-                 iSTATE1 |                              011 |                             0011
-                 iSTATE2 |                              100 |                             0100
-                 iSTATE3 |                              101 |                             1010
-                 iSTATE4 |                              110 |                             1011
-                 iSTATE6 |                              111 |                             1100
+                 iSTATE5 |                         00000001 |                             0000
+                  iSTATE |                         00000010 |                             0001
+                 iSTATE0 |                         00000100 |                             0010
+                 iSTATE1 |                         00001000 |                             0011
+                 iSTATE2 |                         00010000 |                             0100
+                 iSTATE3 |                         00100000 |                             1010
+                 iSTATE4 |                         01000000 |                             1011
+                 iSTATE6 |                         10000000 |                             1100
 ---------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'FN_buffer_reg' using encoding 'sequential' in module 'ALU_ctrl'
-WARNING: [Synth 8-327] inferring latch for variable 'A_reg' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:41]
+INFO: [Synth 8-3354] encoded FSM with state register 'FN_buffer_reg' using encoding 'one-hot' in module 'ALU_ctrl'
 WARNING: [Synth 8-327] inferring latch for variable 'A_reg' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:27]
 WARNING: [Synth 8-327] inferring latch for variable 'B_reg' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:28]
 WARNING: [Synth 8-327] inferring latch for variable 'result_reg' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU.vhd:42]
@@ -142,7 +140,7 @@ WARNING: [Synth 8-327] inferring latch for variable 'mod_step2_reg' [C:/Users/An
 WARNING: [Synth 8-327] inferring latch for variable 'mod_step1_reg' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU.vhd:53]
 WARNING: [Synth 8-327] inferring latch for variable 'SEGMENT_reg' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/7SegDriver.vhd:144]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -161,18 +159,17 @@ Detailed RTL Component Info :
 	                8 Bit    Registers := 1     
 	                4 Bit    Registers := 1     
 	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
 	                1 Bit    Registers := 5     
 +---Muxes : 
 	   2 Input   10 Bit        Muxes := 2     
-	   2 Input    8 Bit        Muxes := 12    
-	   8 Input    8 Bit        Muxes := 1     
+	   8 Input    8 Bit        Muxes := 2     
+	   2 Input    8 Bit        Muxes := 15    
 	   9 Input    8 Bit        Muxes := 1     
 	   7 Input    8 Bit        Muxes := 1     
 	   8 Input    4 Bit        Muxes := 1     
 	   2 Input    4 Bit        Muxes := 2     
 	   5 Input    4 Bit        Muxes := 1     
-	   8 Input    3 Bit        Muxes := 1     
-	   2 Input    3 Bit        Muxes := 3     
 	   9 Input    3 Bit        Muxes := 1     
 	   3 Input    2 Bit        Muxes := 1     
 	   2 Input    1 Bit        Muxes := 16    
@@ -194,25 +191,25 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:27 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:38 ; elapsed = 00:00:41 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:38 ; elapsed = 00:00:41 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Finished Timing Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:38 ; elapsed = 00:00:41 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Finished Technology Mapping : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -230,38 +227,30 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Finished IO Insertion : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
 CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[7] with 1st driver pin 'regUpdate_inst/Reg_A_reg[7]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:30]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[7] with 2nd driver pin 'regUpdate_inst/A_reg[7]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:41]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[7] with 3rd driver pin 'regUpdate_inst/A_reg[7]__0/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[7] with 2nd driver pin 'regUpdate_inst/A_reg[7]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:27]
 CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[6] with 1st driver pin 'regUpdate_inst/Reg_A_reg[6]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:30]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[6] with 2nd driver pin 'regUpdate_inst/A_reg[6]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:41]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[6] with 3rd driver pin 'regUpdate_inst/A_reg[6]__0/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[6] with 2nd driver pin 'regUpdate_inst/A_reg[6]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:27]
 CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[5] with 1st driver pin 'regUpdate_inst/Reg_A_reg[5]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:30]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[5] with 2nd driver pin 'regUpdate_inst/A_reg[5]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:41]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[5] with 3rd driver pin 'regUpdate_inst/A_reg[5]__0/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[5] with 2nd driver pin 'regUpdate_inst/A_reg[5]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:27]
 CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[4] with 1st driver pin 'regUpdate_inst/Reg_A_reg[4]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:30]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[4] with 2nd driver pin 'regUpdate_inst/A_reg[4]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:41]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[4] with 3rd driver pin 'regUpdate_inst/A_reg[4]__0/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[4] with 2nd driver pin 'regUpdate_inst/A_reg[4]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:27]
 CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[3] with 1st driver pin 'regUpdate_inst/Reg_A_reg[3]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:30]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[3] with 2nd driver pin 'regUpdate_inst/A_reg[3]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:41]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[3] with 3rd driver pin 'regUpdate_inst/A_reg[3]__0/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[3] with 2nd driver pin 'regUpdate_inst/A_reg[3]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:27]
 CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[2] with 1st driver pin 'regUpdate_inst/Reg_A_reg[2]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:30]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[2] with 2nd driver pin 'regUpdate_inst/A_reg[2]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:41]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[2] with 3rd driver pin 'regUpdate_inst/A_reg[2]__0/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[2] with 2nd driver pin 'regUpdate_inst/A_reg[2]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:27]
 CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[1] with 1st driver pin 'regUpdate_inst/Reg_A_reg[1]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:30]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[1] with 2nd driver pin 'regUpdate_inst/A_reg[1]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:41]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[1] with 3rd driver pin 'regUpdate_inst/A_reg[1]__0/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[1] with 2nd driver pin 'regUpdate_inst/A_reg[1]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:27]
 CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[0] with 1st driver pin 'regUpdate_inst/Reg_A_reg[0]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:30]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[0] with 2nd driver pin 'regUpdate_inst/A_reg[0]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:41]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[0] with 3rd driver pin 'regUpdate_inst/A_reg[0]__0/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:27]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin A[0] with 2nd driver pin 'regUpdate_inst/A_reg[0]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:27]
 CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin B[7] with 1st driver pin 'regUpdate_inst/Reg_B_reg[7]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:31]
 CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin B[7] with 2nd driver pin 'regUpdate_inst/B_reg[7]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:28]
 CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin B[6] with 1st driver pin 'regUpdate_inst/Reg_B_reg[6]/Q' [C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd:31]
@@ -289,25 +278,25 @@ Report Check Netlist:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -326,42 +315,43 @@ Report Cell Usage:
 |1     |BUFG   |     2|
 |2     |CARRY4 |     4|
 |3     |LUT1   |     6|
-|4     |LUT2   |    17|
-|5     |LUT3   |     8|
-|6     |LUT4   |     3|
-|7     |LUT5   |     5|
-|8     |LUT6   |    11|
-|9     |FDCE   |     4|
-|10    |FDRE   |    26|
-|11    |LD     |    59|
-|12    |LDC    |     1|
-|13    |IBUF   |    12|
-|14    |OBUF   |    12|
+|4     |LUT2   |    20|
+|5     |LUT3   |     6|
+|6     |LUT4   |     4|
+|7     |LUT5   |     4|
+|8     |LUT6   |    17|
+|9     |FDCE   |    10|
+|10    |FDPE   |     1|
+|11    |FDRE   |    26|
+|12    |LD     |    51|
+|13    |LDC    |     1|
+|14    |IBUF   |    12|
+|15    |OBUF   |    12|
 +------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1136.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 40 critical warnings and 20 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:44 . Memory (MB): peak = 1129.352 ; gain = 0.000
-Synthesis Optimization Complete : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1129.352 ; gain = 0.000
+Synthesis finished with 0 errors, 32 critical warnings and 19 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:28 ; elapsed = 00:00:40 . Memory (MB): peak = 1136.531 ; gain = 0.000
+Synthesis Optimization Complete : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1136.531 ; gain = 0.000
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1129.352 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 64 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1136.531 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 56 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1133.473 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1136.531 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 60 instances were transformed.
-  LD => LDCE: 59 instances
+  A total of 52 instances were transformed.
+  LD => LDCE: 51 instances
   LDC => LDCE: 1 instance 
 
-Synth Design complete, checksum: cd2da6e
+Synth Design complete, checksum: 23287352
 INFO: [Common 17-83] Releasing license: Synthesis
-39 Infos, 40 Warnings, 40 Critical Warnings and 0 Errors encountered.
+39 Infos, 38 Warnings, 32 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:52 ; elapsed = 00:00:57 . Memory (MB): peak = 1133.473 ; gain = 4.121
+synth_design: Time (s): cpu = 00:00:48 ; elapsed = 00:00:53 . Memory (MB): peak = 1136.531 ; gain = 0.000
 INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
 INFO: [Common 17-1381] The checkpoint 'C:/Users/Anestman/Documents/VLSI_labs/project_3/project_3.runs/synth_1/ALU_top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file ALU_top_utilization_synth.rpt -pb ALU_top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Oct 28 02:45:18 2021...
+INFO: [Common 17-206] Exiting Vivado at Thu Oct 28 13:53:58 2021...

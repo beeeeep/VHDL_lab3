@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="7.700000 us"></ZoomStartTime>
-      <ZoomEndTime time="24.500001 us"></ZoomEndTime>
-      <Cursor1Time time="9.980000 us"></Cursor1Time>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="169.600001 us"></ZoomEndTime>
+      <Cursor1Time time="11.500000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="130"></NameColumnWidth>
+      <NameColumnWidth column_width="122"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="27" />
+   <WVObjectSize size="28" />
    <wvobject fp_name="/tb_ALU/A" type="array">
       <obj_property name="ElementShortName">A[7:0]</obj_property>
       <obj_property name="ObjectShortName">A[7:0]</obj_property>
@@ -82,6 +82,10 @@
       <obj_property name="ElementShortName">seven_seg_num[7:0]</obj_property>
       <obj_property name="ObjectShortName">seven_seg_num[7:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/sign_enabled" type="logic">
+      <obj_property name="ElementShortName">sign_enabled</obj_property>
+      <obj_property name="ObjectShortName">sign_enabled</obj_property>
+   </wvobject>
    <wvobject fp_name="/tb_ALU/period" type="other">
       <obj_property name="ElementShortName">period</obj_property>
       <obj_property name="ObjectShortName">period</obj_property>
@@ -126,8 +130,8 @@
       <obj_property name="ElementShortName">button_out</obj_property>
       <obj_property name="ObjectShortName">button_out</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/Debouncer_A_inst/count" type="array">
-      <obj_property name="ElementShortName">count[2:0]</obj_property>
-      <obj_property name="ObjectShortName">count[2:0]</obj_property>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/RegCtrl" type="array">
+      <obj_property name="ElementShortName">RegCtrl[1:0]</obj_property>
+      <obj_property name="ObjectShortName">RegCtrl[1:0]</obj_property>
    </wvobject>
 </wave_config>

@@ -105,11 +105,11 @@ sign <= '0',                    -- B = 3
 '0' after 2 * period,   -- B = 145
 '1' after 3 * period,   -- B = 124
 '0' after 4 * period,   -- B = 249
-'1' after 5 * period,   -- B = 105
-'0' after 6 * period,   -- B = 35
-'1' after 7 * period,   -- B = 104
-'1' after 8 * period,   -- B = A 
-'1' after 9 * period;   -- B = A A 
+'0' after 1118 * period,   -- B = 105
+'0' after 1119 * period,   -- B = 35
+'0' after 1120 * period,   -- B = 104
+'1' after 1121 * period,   -- B = A 
+'0' after 19 * period;   -- B = A A 
 
 
 enter <= '1',                    -- B = 3

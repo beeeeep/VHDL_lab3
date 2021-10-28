@@ -32,22 +32,24 @@ sequential:process(clk,reset)
    end if;
    end process;
    
+   A<=Reg_A;
+   B<=Reg_B;
+   
+
 combinatorial: process(RegCtrl,input)
    begin
-   if RegCtrl = "00" then
+   if RegCtrl = "01" then
        next_Reg_A<=input;
    else 
        next_Reg_A<=Reg_A;
-       A<=Reg_A;
    end if;
    
-   if RegCtrl = "00" then
+   if RegCtrl = "10" then
        next_Reg_B<=input;
    else 
        next_Reg_B<=Reg_B;
    end if;
    end process;
-   A<=Reg_A;
-   B<=Reg_B;
+
    
 end behavioral;

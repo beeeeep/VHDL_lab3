@@ -1,101 +1,109 @@
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use ieee.std_logic_unsigned.all;
 
+--
 
 entity ALU is
-   port ( A          : in  std_logic_vector (7 downto 0);   -- Input A
-          B          : in  std_logic_vector (7 downto 0);   -- Input B
-          FN         : in  std_logic_vector (3 downto 0);   -- ALU functions provided by the ALU_Controller (see the lab manual)
-          result 	 : out std_logic_vector (7 downto 0);   -- ALU output (unsigned binary)
-	      overflow   : out std_logic;                       -- '1' if overflow ocurres, '0' otherwise 
-	      sign       : out std_logic                        -- '1' if the result is a negative value, '0' otherwise
+    port ( A          : in  std_logic_vector (7 downto 0);   -- Input A
+         B          : in  std_logic_vector (7 downto 0);   -- Input B
+         FN         : in  std_logic_vector (3 downto 0);   -- ALU functions provided by the ALU_Controller (see the lab manual)
+         result 	 : out std_logic_vector (7 downto 0);   -- ALU output (unsigned binary)
+         overflow   : out std_logic;                       -- '1' if overflow ocurres, '0' otherwise 
+         sign       : out std_logic                        -- '1' if the result is a negative value, '0' otherwise
         );
 end ALU;
 
- architecture behavioral of ALU is
- 
-      signal RR: unsigned(7 downto 0);
-      signal temp_Y : unsigned (8 downto 0);
-      signal mod_step1 : std_logic_vector(7 downto 0);
-      signal mod_step2 : std_logic_vector(7 downto 0);
-      signal mod_step3 : std_logic_vector(7 downto 0);
-      signal mod_step4 : std_logic_vector(7 downto 0);
-      signal mod_step5 : std_logic_vector(7 downto 0);
-      signal mod_step6 : std_logic_vector(7 downto 0);
-      signal mod_step7 : std_logic_vector(7 downto 0);
--- SIGNAL DEFINITIONS HERE IF NEEDED
+architecture behavioral of ALU is
+
+    signal RR: unsigned(7 downto 0);
+    signal temp_Y : unsigned (8 downto 0);
+    signal mod_step1 : std_logic_vector(7 downto 0);
+    signal mod_step2 : std_logic_vector(7 downto 0);
+    signal mod_step3 : std_logic_vector(7 downto 0);
+    signal mod_step4 : std_logic_vector(7 downto 0);
+    signal mod_step5 : std_logic_vector(7 downto 0);
+    signal mod_step6 : std_logic_vector(7 downto 0);
+    signal mod_step7 : std_logic_vector(7 downto 0);
+
 
 begin
-   mod_step1 <= A - 192 when A >= 192 else A;
-   mod_step2 <= mod_step1 - 96 when mod_step1 >= 96 else mod_step1;
-   mod_step3 <= mod_step2 - 48 when mod_step2 >= 48 else mod_step2;
-   mod_step4 <= mod_step3 - 24 when mod_step3 >= 24 else mod_step3;
-   mod_step5 <= mod_step4 - 12 when mod_step4 >= 12 else mod_step4;
-   mod_step6 <= mod_step5 - 6 when mod_step5 >= 6 else mod_step5;
-   mod_step7 <= mod_step6 - 3 when mod_step6 >= 3 else mod_step6;
-   process ( FN,mod_step7,RR,temp_Y, A, B )
-   begin
-       overflow <= '0';
-       sign <= '0';
-       result <= "00000000";
-       RR <="00000000";
-       temp_Y <="000000000";
-       
-   case FN is
-       when "0000" =>
-           result<=A;
-       when "0001" =>
-           result<=B;
-       when "0010" =>
-           temp_Y  <= ( '0' & unsigned(A)) + ('0' & unsigned(B) );
-           result<= std_logic_vector (temp_Y( 7 downto 0));
-           overflow <= temp_Y(8);
-       when "0011" =>
-            temp_Y <= ( '0' & unsigned(A)) - ('0' & unsigned(B) );
-            result<= std_logic_vector (temp_Y( 7 downto 0));
-       when "0100" =>
-           result <= mod_step7;
-       when "1010" =>
-           temp_Y <= ( '0' & unsigned(A)) + ('0' & unsigned(B) );
-           RR <= (temp_Y( 7 downto 0));
-            overflow <= (A(7) xnor B(7)) and (B(7) xor RR(7));
-            if (RR(7) = '1') then
-            result <= std_logic_vector(not(RR(7 downto 0))+1);
-            sign <= '1';
-            else
-            result <= std_logic_vector(RR(7 downto 0)); 
-            sign <= '0';
-           end if;
-       when "1011" =>              
-           temp_Y <= ( '0' & unsigned(A)) - ('0' & unsigned(B) );
-            RR <= (temp_Y( 7 downto 0));
-            overflow <= (A(7) xor B(7)) and (B(7) xnor RR(7));
-            if (RR(7) = '1') then
-            result <= std_logic_vector(not(RR(7 downto 0))+1);
-            sign <= '1';
-            else
-            result <= std_logic_vector(RR(7 downto 0)); 
-            sign <= '0';
-            end if;
-   when "1100" =>
-       if(A(7) = '0') then 
-               result <= mod_step7;
-           else
-                if mod_step7 = 1 then
-                       result <= "00000000";
-                   elsif mod_step7 = 2 then
-                       result <= "00000001";
-                   elsif mod_step7 = 0 then
-                       result <= "00000010";
-               end if;        
-           end if;
-   when others =>
+    mod_step1 <= A - 192 when A >= 192 else A;
+    mod_step2 <= mod_step1 - 96 when mod_step1 >= 96 else mod_step1;
+    mod_step3 <= mod_step2 - 48 when mod_step2 >= 48 else mod_step2;
+    mod_step4 <= mod_step3 - 24 when mod_step3 >= 24 else mod_step3;
+    mod_step5 <= mod_step4 - 12 when mod_step4 >= 12 else mod_step4;
+    mod_step6 <= mod_step5 - 6 when mod_step5 >= 6 else mod_step5;
+    mod_step7 <= mod_step6 - 3 when mod_step6 >= 3 else mod_step6;
+
+
+    process ( FN,mod_step7,RR,temp_Y, A, B )
+    begin
         overflow <= '0';
-        sign<='0';
-        result<="00000000";
-   end case;
-   end process;
+        sign <= '0';
+        result <= "00000000";
+        RR <="00000000";
+        temp_Y <="000000000";
+
+        case FN is
+            when "0000" => --Load A
+                result<=A;
+            when "0001" => --Load B
+                result<=B;
+            when "0010" => -- Unsigned A+B
+                temp_Y  <= ( '0' & unsigned(A)) + ('0' & unsigned(B) );
+                result<= std_logic_vector (temp_Y( 7 downto 0));
+                overflow <= temp_Y(8);
+            when "0011" => -- Unsigned A-B
+                temp_Y <= ( '0' & unsigned(A)) - ('0' & unsigned(B) ); --check overflow and  sub
+                result<= std_logic_vector (temp_Y( 7 downto 0));
+            when "0100" => -- Unsigned Amod3
+                result <= mod_step7;
+            when "1010" => --Signed A+B
+                temp_Y <= ( '0' & unsigned(A)) + ('0' & unsigned(B) );
+                RR <= (temp_Y( 7 downto 0));
+                --If the sum of two same sign numbers yields a negative result, the sum has overflowed
+                --XNOR checks if A B have the same sign, XOR checks if their sign is the same with the result
+                overflow <= (A(7) xnor B(7)) and (B(7) xor RR(7));
+                if (RR(7) = '1') then
+                    result <= std_logic_vector(not(RR(7 downto 0))+1); --convert to unsigned
+                    sign <= '1';
+                else
+                    result <= std_logic_vector(RR(7 downto 0));
+                    sign <= '0';
+                end if;
+            when "1011" =>  --Signed A-B            
+                temp_Y <= ( '0' & unsigned(A)) - ('0' & unsigned(B) );
+                RR <= (temp_Y( 7 downto 0));
+                overflow <= (A(7) xor B(7)) and (B(7) xnor RR(7)); --If the sum of two same sign numbers yields a negative result, the sum has overflowed
+                if (RR(7) = '1') then
+                    result <= std_logic_vector(not(RR(7 downto 0))+1); --convert to unsigned
+                    sign <= '1';
+                else
+                    result <= std_logic_vector(RR(7 downto 0));
+                    sign <= '0';
+                end if;
+            when "1100" => --Signed Amod3 
+                if(A(7) = '0') then
+                    result <= mod_step7;
+                else
+                    if mod_step7 = 1 then
+                        result <= "00000000";
+                    elsif mod_step7 = 2 then
+                        result <= "00000001";
+                    elsif mod_step7 = 0 then
+                        result <= "00000010";
+                    end if;
+                end if;
+            when others =>
+                overflow <= '0';
+                sign<='0';
+                result<="00000000";
+                RR <="00000000";
+                temp_Y <="000000000";
+        end case;
+    end process;
 
 end Behavioral;

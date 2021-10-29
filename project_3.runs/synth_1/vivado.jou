@@ -2,8 +2,8 @@
 # Vivado v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Fri Oct 29 02:22:43 2021
-# Process ID: 19116
+# Start of session at: Fri Oct 29 12:04:54 2021
+# Process ID: 12188
 # Current directory: C:/Users/Anestman/Documents/VLSI_labs/project_3/project_3.runs/synth_1
 # Command line: vivado.exe -log ALU_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source ALU_top.tcl
 # Log file: C:/Users/Anestman/Documents/VLSI_labs/project_3/project_3.runs/synth_1/ALU_top.vds

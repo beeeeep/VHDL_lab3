@@ -13,7 +13,7 @@ entity seven_seg_driver is
         );
 end seven_seg_driver;
 
--- 6 registers, 4 (8bit)buffer, 1 (10bit) counter,1 (2it)index_counter. Total: 20bits
+--, 1 (10bit) counter,1 (2it)index_counter. Total: 12bits
 
 architecture behavioral of seven_seg_driver is
 

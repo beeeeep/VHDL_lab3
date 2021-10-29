@@ -12,126 +12,52 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000000 us"></ZoomStartTime>
-      <ZoomEndTime time="169.600001 us"></ZoomEndTime>
-      <Cursor1Time time="11.500000 us"></Cursor1Time>
+      <ZoomEndTime time="83.600001 us"></ZoomEndTime>
+      <Cursor1Time time="10.500000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="122"></NameColumnWidth>
-      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+      <NameColumnWidth column_width="164"></NameColumnWidth>
+      <ValueColumnWidth column_width="79"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="28" />
-   <wvobject fp_name="/tb_ALU/A" type="array">
+   <WVObjectSize size="10" />
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_inst/A" type="array">
       <obj_property name="ElementShortName">A[7:0]</obj_property>
       <obj_property name="ObjectShortName">A[7:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_ALU/B" type="array">
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_inst/B" type="array">
       <obj_property name="ElementShortName">B[7:0]</obj_property>
       <obj_property name="ObjectShortName">B[7:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_ALU/FN" type="array">
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_inst/FN" type="array">
       <obj_property name="ElementShortName">FN[3:0]</obj_property>
       <obj_property name="ObjectShortName">FN[3:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_ALU/result" type="array">
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_inst/result" type="array">
       <obj_property name="ElementShortName">result[7:0]</obj_property>
       <obj_property name="ObjectShortName">result[7:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_ALU/overflow" type="logic">
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_inst/overflow" type="logic">
       <obj_property name="ElementShortName">overflow</obj_property>
       <obj_property name="ObjectShortName">overflow</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_ALU/sign" type="logic">
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_inst/sign" type="logic">
       <obj_property name="ElementShortName">sign</obj_property>
       <obj_property name="ObjectShortName">sign</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/start_kb_clk" type="logic">
-      <obj_property name="ElementShortName">start_kb_clk</obj_property>
-      <obj_property name="ObjectShortName">start_kb_clk</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/kb_clk_to_dut" type="logic">
-      <obj_property name="ElementShortName">kb_clk_to_dut</obj_property>
-      <obj_property name="ObjectShortName">kb_clk_to_dut</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/tb_seg_en" type="array">
-      <obj_property name="ElementShortName">tb_seg_en[3:0]</obj_property>
-      <obj_property name="ObjectShortName">tb_seg_en[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/tb_clk" type="logic">
-      <obj_property name="ElementShortName">tb_clk</obj_property>
-      <obj_property name="ObjectShortName">tb_clk</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/clk" type="logic">
-      <obj_property name="ElementShortName">clk</obj_property>
-      <obj_property name="ObjectShortName">clk</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/start_tb" type="logic">
-      <obj_property name="ElementShortName">start_tb</obj_property>
-      <obj_property name="ObjectShortName">start_tb</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/tb_rst" type="logic">
-      <obj_property name="ElementShortName">tb_rst</obj_property>
-      <obj_property name="ObjectShortName">tb_rst</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/sys_rst" type="logic">
-      <obj_property name="ElementShortName">sys_rst</obj_property>
-      <obj_property name="ObjectShortName">sys_rst</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/seven_seg_num" type="array">
-      <obj_property name="ElementShortName">seven_seg_num[7:0]</obj_property>
-      <obj_property name="ObjectShortName">seven_seg_num[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/sign_enabled" type="logic">
-      <obj_property name="ElementShortName">sign_enabled</obj_property>
-      <obj_property name="ObjectShortName">sign_enabled</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/period" type="other">
-      <obj_property name="ElementShortName">period</obj_property>
-      <obj_property name="ObjectShortName">period</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/FN" type="array">
-      <obj_property name="ElementShortName">FN[3:0]</obj_property>
-      <obj_property name="ObjectShortName">FN[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/enter_out" type="logic">
-      <obj_property name="ElementShortName">enter_out</obj_property>
-      <obj_property name="ObjectShortName">enter_out</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/sign_out" type="logic">
-      <obj_property name="ElementShortName">sign_out</obj_property>
-      <obj_property name="ObjectShortName">sign_out</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/enter" type="logic">
-      <obj_property name="ElementShortName">enter</obj_property>
-      <obj_property name="ObjectShortName">enter</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/sign" type="logic">
-      <obj_property name="ElementShortName">sign</obj_property>
-      <obj_property name="ObjectShortName">sign</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/sign" type="logic">
-      <obj_property name="ElementShortName">sign</obj_property>
-      <obj_property name="ObjectShortName">sign</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/FN_buffer" type="array">
-      <obj_property name="ElementShortName">FN_buffer[3:0]</obj_property>
-      <obj_property name="ObjectShortName">FN_buffer[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/FN_next" type="array">
-      <obj_property name="ElementShortName">FN_next[3:0]</obj_property>
-      <obj_property name="ObjectShortName">FN_next[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/Debouncer_B_inst/button_in" type="logic">
-      <obj_property name="ElementShortName">button_in</obj_property>
-      <obj_property name="ObjectShortName">button_in</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/Debouncer_B_inst/button_out" type="logic">
-      <obj_property name="ElementShortName">button_out</obj_property>
-      <obj_property name="ObjectShortName">button_out</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/RegCtrl" type="array">
       <obj_property name="ElementShortName">RegCtrl[1:0]</obj_property>
       <obj_property name="ObjectShortName">RegCtrl[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/RegCtrl_buffer" type="array">
+      <obj_property name="ElementShortName">RegCtrl_buffer[1:0]</obj_property>
+      <obj_property name="ObjectShortName">RegCtrl_buffer[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/RegCtrl_next" type="array">
+      <obj_property name="ElementShortName">RegCtrl_next[1:0]</obj_property>
+      <obj_property name="ObjectShortName">RegCtrl_next[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/FN_buffer" type="array">
+      <obj_property name="ElementShortName">FN_buffer[3:0]</obj_property>
+      <obj_property name="ObjectShortName">FN_buffer[3:0]</obj_property>
    </wvobject>
 </wave_config>

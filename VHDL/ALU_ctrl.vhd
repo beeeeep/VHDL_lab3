@@ -54,60 +54,61 @@ begin
      );
 
 
-FN_stage_enter_presses_comb: process(sign_enabled,enter_out,RegCtrl_buffer,FN_buffer,reset) -- FSM for FN selection
+FN_stage_enter_presses_comb: process(sign_enabled,enter_out,FN_buffer,reset) -- FSM for FN selection
         begin      
         if enter_out='1' then
             case FN_buffer(3 downto 0) is
                 when "0000" =>
                     FN_next<="0001";
-                    RegCtrl_next<="01";
                 when "0001" =>
                     FN_next<="0010";
-                    RegCtrl_next<="10";
                 when "0010" =>
                     FN_next<="0011";
-                    RegCtrl_next<="00";
                 when "0011" =>
-                    FN_next<="0100";
-                    RegCtrl_next<="00" ;            
+                    FN_next<="0100";           
                 when "0100" =>
                     if(sign_enabled='1') then --if signed mode is enabled allow the signed calculations to be selected
                         FN_next<="1010";
-                        RegCtrl_next<="00";
                     else
                         FN_next<=(others => '0');
-                        RegCtrl_next<="00";
                     end if;
                 when "1010" =>
                     if(sign_enabled='1') then --if signed mode is enabled allow the signed calculations to be selected
                         FN_next<="1011";
-                        RegCtrl_next<="00";
                     else
                         FN_next<=(others => '0');
-                        RegCtrl_next<="00";
                     end if;
                 when "1011" =>
                     if(sign_enabled='1') then --if signed mode is enabled allow the signed calculations to be selected
                         FN_next<="1100";
-                        RegCtrl_next<="00";
                     else
                         FN_next<=(others => '0');
-                        RegCtrl_next<="00";
                     end if;
                 when "1100" =>
                     FN_next<=(others => '0');
-                    RegCtrl_next<="00";
                 when others    =>
                     FN_next<=(others => '0');
-                    RegCtrl_next<="00";        
             end case;
             else
-            FN_next<=FN_buffer;           
-            RegCtrl_next<=RegCtrl_buffer;
+            FN_next<=FN_buffer;                 
         end if;
     end process;
+    
+  RegCtrl_comb: process(FN_buffer,reset) -- FSM for   RegCtrl selection
+    begin       
+      case FN_buffer(3 downto 0) is
+                  when "0000" =>
+                      RegCtrl_next<="01";
+                  when "0001" =>
+                      RegCtrl_next<="10";
+                     when others    => 
+                      RegCtrl_next<="00";     
+     end case;
+    end process;  
+    
+    
 
-  Set_FN_seq: process(RegCtrl_next,FN_next,clk,reset) --FN buffer register
+  Set_FN_and_RegCtrl_seq: process(RegCtrl_next,FN_next,clk,reset) --FN buffer register
     begin
         if(reset= '1') then
             FN_buffer<=(others => '0');
@@ -119,6 +120,9 @@ FN_stage_enter_presses_comb: process(sign_enabled,enter_out,RegCtrl_buffer,FN_bu
     end process;
     FN<=FN_buffer; -- connect FN output with buffer
     RegCtrl<=RegCtrl_buffer;
+    
+    
+    
   Set_sign_seq: process(sign_enabled_next,clk,reset)  -- sign_enabled register
     begin
         if(reset= '1') then

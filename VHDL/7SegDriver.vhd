@@ -13,15 +13,14 @@ entity seven_seg_driver is
         );
 end seven_seg_driver;
 
+-- 6 registers, 4 (8bit)buffer, 1 (10bit) counter,1 (2it)index_counter. Total: 20bits
+
 architecture behavioral of seven_seg_driver is
 
     signal Seg_reg_0,Seg_reg_1,Seg_reg_2,Seg_reg_3:  std_logic_vector(7 downto 0);
-    signal counter,counter_next:unsigned(1 downto 0);
+    signal index,index_next:unsigned(1 downto 0);
     signal counter_delay,counter_delay_next:unsigned(9 downto 0);
 begin
-
-
-
 
     --/*******************************************************
     --/
@@ -119,7 +118,7 @@ begin
     --/      7 Segment driver processes
     --/ 
     --/*******************************************************
-    Segment_scan_delay:   process(clk,reset,counter_delay,counter)
+    Segment_scan_delay:   process(clk,reset,counter_delay,index)
     begin
         if rising_edge(clk)then
             if(reset='1') then
@@ -131,22 +130,28 @@ begin
         end if;
         counter_delay_next<=counter_delay+1;
         if( counter_delay="1111111111") then
-            counter_next <= counter + 1;
+            index_next <= index + 1;
         else
-            counter_next<=counter;
+            index_next<=index;
         end if;
     end process;
 
-    Seg_driver: process(counter,Seg_reg_0,Seg_reg_1,Seg_reg_2,Seg_reg_3) -- scans each 7-seg display with a shift register, changes the code to display, according to the register enabled
+    Seg_driver: process(reset,overflow,index,Seg_reg_0,Seg_reg_1,Seg_reg_2,Seg_reg_3) -- scans each 7-seg display with a shift register, changes the code to display, according to the register enabled
     begin
-        if(overflow='1') then -- if overflow is detected, show dashes to all segments
+       if(reset='1') then -- if overflow is detected, show dashes to all segments
+         DIGIT_ANODE <= "0000";
+         SEGMENT <= "00000000";
+    
+        elsif(overflow='1') then -- if overflow is detected, show dashes to all segments
             DIGIT_ANODE <= "0000";
             SEGMENT <= "01000000";
         else
-            case counter is
+            case index is
                 when "00" =>
                     if Seg_reg_0 = "00000000" then
                         DIGIT_ANODE <= "1111";
+                        SEGMENT<="11111111";
+                        
                     else
                         DIGIT_ANODE <= "1110";
                         SEGMENT <= Seg_reg_0;
@@ -154,6 +159,7 @@ begin
                 when "01" =>
                     if Seg_reg_1 = "00000000" then
                         DIGIT_ANODE <= "1111";
+                        SEGMENT<="11111111";
                     else
                         DIGIT_ANODE <= "1101";
                         SEGMENT <= Seg_reg_1;
@@ -162,6 +168,7 @@ begin
                 when "10" =>
                     if Seg_reg_2 = "00000000" then
                         DIGIT_ANODE <= "1111";
+                        SEGMENT<="11111111";
                     else
                         DIGIT_ANODE <= "1011";
                         SEGMENT <= Seg_reg_2;
@@ -169,12 +176,14 @@ begin
                 when "11" =>
                     if Seg_reg_3 = "00000000" then
                         DIGIT_ANODE <= "1111";
+                        SEGMENT<="11111111";
                     else
                         DIGIT_ANODE <= "0111";
                         SEGMENT <= Seg_reg_3;
                     end if;
                 when others =>
                     DIGIT_ANODE <= "1111";
+                    SEGMENT<="11111111";
             end case;
         end if;
     end process;

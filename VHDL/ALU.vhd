@@ -16,9 +16,8 @@ end ALU;
 
  architecture behavioral of ALU is
  
-      signal regA,regB:std_logic_vector(7 downto 0);
-      signal AA,BB,RR: std_logic_vector(7 downto 0);
-      signal temp_A, temp_B, temp_Y : std_logic_vector (7 downto 0);
+      signal RR: unsigned(7 downto 0);
+      signal temp_Y : unsigned (8 downto 0);
       signal mod_step1 : std_logic_vector(7 downto 0);
       signal mod_step2 : std_logic_vector(7 downto 0);
       signal mod_step3 : std_logic_vector(7 downto 0);
@@ -29,143 +28,59 @@ end ALU;
 -- SIGNAL DEFINITIONS HERE IF NEEDED
 
 begin
-   process ( FN, A, B )
+   mod_step1 <= A - 192 when A >= 192 else A;
+   mod_step2 <= mod_step1 - 96 when mod_step1 >= 96 else mod_step1;
+   mod_step3 <= mod_step2 - 48 when mod_step2 >= 48 else mod_step2;
+   mod_step4 <= mod_step3 - 24 when mod_step3 >= 24 else mod_step3;
+   mod_step5 <= mod_step4 - 12 when mod_step4 >= 12 else mod_step4;
+   mod_step6 <= mod_step5 - 6 when mod_step5 >= 6 else mod_step5;
+   mod_step7 <= mod_step6 - 3 when mod_step6 >= 3 else mod_step6;
+   process ( FN,mod_step7,RR,temp_Y, A, B )
    begin
+       overflow <= '0';
+       sign <= '0';
+       result <= "00000000";
+       RR <="00000000";
+       temp_Y <="000000000";
+       
    case FN is
        when "0000" =>
-           regA<=A;
-           temp_A<=A;
+           result<=A;
        when "0001" =>
-           regB<=B;
-           temp_B<=B;
+           result<=B;
        when "0010" =>
-           result <= regA + regB;
-           temp_Y <= regA + regB;
-           if((temp_A(7)='1' and temp_B(1)='1')or((temp_A(7)='1' or temp_B(1)='1')and temp_Y(7)='0')) then 
-               overflow <= '1'; 
-           else 
-               overflow <='0'; 
-	       end if;
+           temp_Y  <= ( '0' & unsigned(A)) + ('0' & unsigned(B) );
+           result<= std_logic_vector (temp_Y( 7 downto 0));
+           overflow <= temp_Y(8);
        when "0011" =>
-           result <= regA + not(regB) + 1;  
+            temp_Y <= ( '0' & unsigned(A)) - ('0' & unsigned(B) );
+            result<= std_logic_vector (temp_Y( 7 downto 0));
        when "0100" =>
-                 if regA >= 192 then
-       mod_step1 <=regA-192;
-       else mod_step1 <=regA;
-       end if;
-       if mod_step1 >= 96 then
-       mod_step2 <=mod_step1-96;
-       else mod_step2 <=mod_step1;
-       end if;
-       if mod_step2 >= 48 then
-       mod_step3 <=mod_step2-48;
-       else mod_step3 <=mod_step2;
-       end if;
-       if mod_step3 >= 24 then
-       mod_step4 <=mod_step3-24;
-       else mod_step4 <=mod_step3;
-       end if;
-       if mod_step4 >= 12 then
-       mod_step5 <=mod_step4-12;
-       else mod_step5 <=mod_step4;
-       end if;
-       if mod_step5 >= 6 then
-       mod_step6 <=mod_step5-6;
-       else mod_step6 <=mod_step5;
-       end if;
-       if mod_step6 >= 6 then
-       mod_step7 <=mod_step6-3;
-       else mod_step7 <=mod_step6;
-       end if;
-       result <= mod_step7;
+           result <= mod_step7;
        when "1010" =>
-           if(regA(7) = '1') then 
-               AA<=regA xor "01111111"+1;
-           else
-               AA<=regA;
-           end if;
-           if(regB(7) = '1') then 
-               BB<=regB xor "01111111"+1;
-           else
-               BB<=regB;
-           end if;
-               RR<=AA+BB;
-           if(regA(7) = '0'and regB(7) = '0' and RR(7) = '1') then 
-               result<= RR;
-               overflow <= '1';
-               sign<='0';
-           elsif(regA(7) = '1'and regB(7) = '1' and RR(7) = '0') then
-               result<= RR;
-               overflow <= '1';
-               sign<='1';
-           elsif( RR(7) = '0')then
-               overflow <= '0';
-               sign<='0';
-               result<=RR;
-           else
-               overflow <= '0';
-               sign<='1';
-               result<=RR xor "01111111"+1;
+           temp_Y <= ( '0' & unsigned(A)) + ('0' & unsigned(B) );
+           RR <= (temp_Y( 7 downto 0));
+            overflow <= (A(7) xnor B(7)) and (B(7) xor RR(7));
+            if (RR(7) = '1') then
+            result <= std_logic_vector(not(RR(7 downto 0))+1);
+            sign <= '1';
+            else
+            result <= std_logic_vector(RR(7 downto 0)); 
+            sign <= '0';
            end if;
        when "1011" =>              
-          if(regA(7) = '1') then 
-               AA<=regA xor "01111111"+1;
-           else
-               AA<=regA;
-           end if;
-           if(regB(7) = '1') then 
-               BB<=not regB+'1';
-           else
-               BB<=regB;
-           end if;
-               RR<=AA+BB;
-           if(regA(7) = '0'and regB(7) = '1' and RR(7) = '1') then 
-               result<= RR;
-               overflow <= '1';
-               sign<='0';
-           elsif(regA(7) = '1'and regB(7) = '0' and RR(7) = '0') then
-               result<= RR;
-               overflow <= '1';
-               sign<='1';
-           elsif( RR(7) = '0')then
-               overflow <= '0';
-               sign<='0';
-               result<=RR;
-           else
-               overflow <= '0';
-               sign<='1';
-               result<=RR xor "01111111"+1;
-           end if;
+           temp_Y <= ( '0' & unsigned(A)) - ('0' & unsigned(B) );
+            RR <= (temp_Y( 7 downto 0));
+            overflow <= (A(7) xor B(7)) and (B(7) xnor RR(7));
+            if (RR(7) = '1') then
+            result <= std_logic_vector(not(RR(7 downto 0))+1);
+            sign <= '1';
+            else
+            result <= std_logic_vector(RR(7 downto 0)); 
+            sign <= '0';
+            end if;
    when "1100" =>
-      if regA >= 192 then
-       mod_step1 <=regA-192;
-       else mod_step1 <=regA;
-       end if;
-       if mod_step1 >= 96 then
-       mod_step2 <=mod_step1-96;
-       else mod_step2 <=mod_step1;
-       end if;
-       if mod_step2 >= 48 then
-       mod_step3 <=mod_step2-48;
-       else mod_step3 <=mod_step2;
-       end if;
-       if mod_step3 >= 24 then
-       mod_step4 <=mod_step3-24;
-       else mod_step4 <=mod_step3;
-       end if;
-       if mod_step4 >= 12 then
-       mod_step5 <=mod_step4-12;
-       else mod_step5 <=mod_step4;
-       end if;
-       if mod_step5 >= 6 then
-       mod_step6 <=mod_step5-6;
-       else mod_step6 <=mod_step5;
-       end if;
-       if mod_step6 >= 6 then
-       mod_step7 <=mod_step6-3;
-       else mod_step7 <=mod_step6;
-       end if;
-       if(regA(7) = '0') then 
+       if(A(7) = '0') then 
                result <= mod_step7;
            else
                 if mod_step7 = 1 then

@@ -38,8 +38,6 @@ end component;
    signal A          : std_logic_vector(7 downto 0);
    signal B          : std_logic_vector(7 downto 0);
    signal FN         : std_logic_vector(3 downto 0);
-   signal result     : std_logic_vector(7 downto 0);
-   signal overflow   : std_logic;
    signal sign       : std_logic;
    signal enter      : std_logic;
    signal start_kb_clk, kb_clk_to_dut : std_logic := '0'; 
@@ -151,10 +149,10 @@ enter <= '1',                    -- B = 3
         "00101101" after 8 * period,   -- B = 45
         "00100100" after 9 * period;   -- B = 36
      
-   FN <= "0000",                              -- Pass A
-         "0001" after 1 * period,             -- Pass B
-         "0000" after 2 * period,             -- Pass A
-         "0001" after 3 * period,             -- Pass B
+   FN <= "0001",                              -- Pass A
+         "0010" after 1 * period,             -- Pass B
+         "0001" after 2 * period,             -- Pass A
+         "0010" after 3 * period,             -- Pass B
          "1100" after 4 * period,             -- Pass unsigned A + B
          "1100" after 5 * period,             -- Pass unsigned A - B  
          "1100" after 6 * period,             -- Pass unsigned A - B

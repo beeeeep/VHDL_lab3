@@ -113,7 +113,7 @@ Counter_sequential: process(clk,reset,counter_next) --counter register, used to 
    end if; 
 end process;
 
-Counter_combinational: process(clk,reset,counter)--counter register, used to count the conversion's steps, counts up to 9
+Counter_combinational: process(clk,reset,counter,BCD_out_buffer)--counter register, used to count the conversion's steps, counts up to 9
  begin   
         if reset='1' then
            counter_next<="0000";

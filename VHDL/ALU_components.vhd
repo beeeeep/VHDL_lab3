@@ -22,8 +22,16 @@ package ALU_components_pack is
         );
    end component;
    
- 
+  -- Shift_Add_3 (for Bin to BCD) 
+    component Shift_Add_3   
+    port ( input       :in  std_logic_vector(3 downto 0);
+           output      :out  std_logic_vector(3 downto 0)
+         );
+    end component;   
    
+   
+ 
+    signal mod_step1 : std_logic_vector(7 downto 0);
    
    -- ADD MORE COMPONENTS HERE IF NEEDED 
    
@@ -55,7 +63,7 @@ end debouncer;
 
 architecture behavioral of debouncer is
 
-   signal count      : unsigned(2 downto 0);  -- Range to count 20ms with 50 MHz clock
+   signal count      : unsigned(19 downto 0);  -- Range to count 20ms with 50 MHz clock
    signal button_tmp : std_logic;
    
 begin
@@ -109,6 +117,36 @@ begin
             q <= d;
          end if;
       end if;
+   end process;              
+
+end behavioral;
+
+------------------------------------------------------------------------------
+-- component Shift_Add_3 
+-------------------------------------------------------------------------------
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+
+entity Shift_Add_3 is
+   port ( input       :in  std_logic_vector(3 downto 0);
+          output      :out std_logic_vector(3 downto 0)
+        );
+end Shift_Add_3;
+
+architecture behavioral of Shift_Add_3 is
+
+
+begin
+
+   process (input)
+   begin
+   if(input>="0101") then
+     output(3 downto 0) <= std_logic_vector(unsigned(input(3 downto 0))+"0011") ;
+   else
+    output(3 downto 0) <=  input(3 downto 0);
+   end if;  
    end process;              
 
 end behavioral;

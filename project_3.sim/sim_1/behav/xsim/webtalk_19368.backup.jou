@@ -2,8 +2,8 @@
 # Webtalk v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Thu Oct 14 21:46:37 2021
-# Process ID: 23584
+# Start of session at: Sun Oct 31 21:58:17 2021
+# Process ID: 19368
 # Current directory: C:/Users/Anestman/Documents/VLSI_labs/project_3/project_3.sim/sim_1/behav/xsim
 # Command line: wbtcv.exe -mode batch -source C:/Users/Anestman/Documents/VLSI_labs/project_3/project_3.sim/sim_1/behav/xsim/xsim.dir/tb_ALU_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: C:/Users/Anestman/Documents/VLSI_labs/project_3/project_3.sim/sim_1/behav/xsim/webtalk.log

@@ -29,7 +29,7 @@ component ALU_top
          b_Enter    : in  std_logic;
          b_Sign     : in  std_logic;
          input      : in  std_logic_vector(7 downto 0);
-         seven_seg  : out std_logic_vector(7 downto 0);
+         seven_seg  : out std_logic_vector(6 downto 0);
          anode      : out std_logic_vector(3 downto 0)
        );
 end component;
@@ -46,8 +46,8 @@ end component;
    constant period   : time := 2500 ns;
    signal start_tb : std_logic := '0'; 
    signal tb_rst, sys_rst : std_logic := '0'; 
-   signal seven_seg_num:  std_logic_vector(7 downto 0); 
-        
+   signal seven_seg_num:  std_logic_vector(6 downto 0); 
+   signal test_nubmer         : std_logic_vector(7 downto 0);    
     
 begin  -- structural
    
@@ -90,6 +90,8 @@ begin  -- structural
           tb_clk <= clk;
           tb_rst <= sys_rst;
           start_tb <= '1' after 2700 ns;
+
+
 
 
 

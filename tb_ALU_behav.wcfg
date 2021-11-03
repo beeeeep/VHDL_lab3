@@ -5,137 +5,63 @@
    <db_ref_list>
       <db_ref path="tb_ALU_behav.wdb" id="1">
          <top_modules>
-            <top_module name="alu_components_pack" />
             <top_module name="tb_ALU" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
-      <ZoomEndTime time="104.999508 us"></ZoomEndTime>
-      <Cursor1Time time="12.322040 us"></Cursor1Time>
+      <ZoomStartTime time="13.258334 us"></ZoomStartTime>
+      <ZoomEndTime time="82.208335 us"></ZoomEndTime>
+      <Cursor1Time time="20.000000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="164"></NameColumnWidth>
-      <ValueColumnWidth column_width="63"></ValueColumnWidth>
+      <NameColumnWidth column_width="161"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="29" />
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_inst/A" type="array">
+   <WVObjectSize size="10" />
+   <wvobject fp_name="/tb_ALU/A" type="array">
       <obj_property name="ElementShortName">A[7:0]</obj_property>
       <obj_property name="ObjectShortName">A[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_inst/B" type="array">
+   <wvobject fp_name="/tb_ALU/A" type="array">
+      <obj_property name="ElementShortName">A[7:0]</obj_property>
+      <obj_property name="ObjectShortName">A[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_ALU/B" type="array">
       <obj_property name="ElementShortName">B[7:0]</obj_property>
       <obj_property name="ObjectShortName">B[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_inst/FN" type="array">
-      <obj_property name="ElementShortName">FN[3:0]</obj_property>
-      <obj_property name="ObjectShortName">FN[3:0]</obj_property>
+   <wvobject fp_name="/tb_ALU/B" type="array">
+      <obj_property name="ElementShortName">B[7:0]</obj_property>
+      <obj_property name="ObjectShortName">B[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_inst/result" type="array">
-      <obj_property name="ElementShortName">result[7:0]</obj_property>
-      <obj_property name="ObjectShortName">result[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_inst/overflow" type="logic">
-      <obj_property name="ElementShortName">overflow</obj_property>
-      <obj_property name="ObjectShortName">overflow</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_inst/sign" type="logic">
-      <obj_property name="ElementShortName">sign</obj_property>
-      <obj_property name="ObjectShortName">sign</obj_property>
+   <wvobject fp_name="/tb_ALU/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_ALU/tb_rst" type="logic">
       <obj_property name="ElementShortName">tb_rst</obj_property>
       <obj_property name="ObjectShortName">tb_rst</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/RegCtrl" type="array">
-      <obj_property name="ElementShortName">RegCtrl[1:0]</obj_property>
-      <obj_property name="ObjectShortName">RegCtrl[1:0]</obj_property>
+   <wvobject fp_name="/tb_ALU/sign" type="logic">
+      <obj_property name="ElementShortName">sign</obj_property>
+      <obj_property name="ObjectShortName">sign</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/RegCtrl_buffer" type="array">
-      <obj_property name="ElementShortName">RegCtrl_buffer[1:0]</obj_property>
-      <obj_property name="ObjectShortName">RegCtrl_buffer[1:0]</obj_property>
+   <wvobject fp_name="/tb_ALU/FN" type="array">
+      <obj_property name="ElementShortName">FN[3:0]</obj_property>
+      <obj_property name="ObjectShortName">FN[3:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/RegCtrl_next" type="array">
-      <obj_property name="ElementShortName">RegCtrl_next[1:0]</obj_property>
-      <obj_property name="ObjectShortName">RegCtrl_next[1:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/ALU_ctrl_inst/FN_buffer" type="array">
-      <obj_property name="ElementShortName">FN_buffer[3:0]</obj_property>
-      <obj_property name="ObjectShortName">FN_buffer[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/BCD_out" type="array">
-      <obj_property name="ElementShortName">BCD_out[9:0]</obj_property>
-      <obj_property name="ObjectShortName">BCD_out[9:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/binary_in" type="array">
-      <obj_property name="ElementShortName">binary_in[7:0]</obj_property>
-      <obj_property name="ObjectShortName">binary_in[7:0]</obj_property>
+   <wvobject fp_name="/tb_ALU/ALU_inst/result" type="array">
+      <obj_property name="ElementShortName">result[7:0]</obj_property>
+      <obj_property name="ObjectShortName">result[7:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/input_1" type="array">
-      <obj_property name="ElementShortName">input_1[3:0]</obj_property>
-      <obj_property name="ObjectShortName">input_1[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/input_2" type="array">
-      <obj_property name="ElementShortName">input_2[3:0]</obj_property>
-      <obj_property name="ObjectShortName">input_2[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/input_3" type="array">
-      <obj_property name="ElementShortName">input_3[3:0]</obj_property>
-      <obj_property name="ObjectShortName">input_3[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/input_4" type="array">
-      <obj_property name="ElementShortName">input_4[3:0]</obj_property>
-      <obj_property name="ObjectShortName">input_4[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/input_5" type="array">
-      <obj_property name="ElementShortName">input_5[3:0]</obj_property>
-      <obj_property name="ObjectShortName">input_5[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/input_6" type="array">
-      <obj_property name="ElementShortName">input_6[3:0]</obj_property>
-      <obj_property name="ObjectShortName">input_6[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/input_7" type="array">
-      <obj_property name="ElementShortName">input_7[3:0]</obj_property>
-      <obj_property name="ObjectShortName">input_7[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/out_1" type="array">
-      <obj_property name="ElementShortName">out_1[3:0]</obj_property>
-      <obj_property name="ObjectShortName">out_1[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/out_2" type="array">
-      <obj_property name="ElementShortName">out_2[3:0]</obj_property>
-      <obj_property name="ObjectShortName">out_2[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/out_3" type="array">
-      <obj_property name="ElementShortName">out_3[3:0]</obj_property>
-      <obj_property name="ObjectShortName">out_3[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/out_4" type="array">
-      <obj_property name="ElementShortName">out_4[3:0]</obj_property>
-      <obj_property name="ObjectShortName">out_4[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/out_5" type="array">
-      <obj_property name="ElementShortName">out_5[3:0]</obj_property>
-      <obj_property name="ObjectShortName">out_5[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/out_6" type="array">
-      <obj_property name="ElementShortName">out_6[3:0]</obj_property>
-      <obj_property name="ObjectShortName">out_6[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/out_7" type="array">
-      <obj_property name="ElementShortName">out_7[3:0]</obj_property>
-      <obj_property name="ObjectShortName">out_7[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/input_1" type="array">
-      <obj_property name="ElementShortName">input_1[3:0]</obj_property>
-      <obj_property name="ObjectShortName">input_1[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_ALU/ALU_top_inst/binary2BCD_inst/Shift_ADD3_1/input" type="array">
-      <obj_property name="ElementShortName">input[3:0]</obj_property>
-      <obj_property name="ObjectShortName">input[3:0]</obj_property>
+   <wvobject fp_name="/tb_ALU/overflow" type="logic">
+      <obj_property name="ElementShortName">overflow</obj_property>
+      <obj_property name="ObjectShortName">overflow</obj_property>
    </wvobject>
 </wave_config>

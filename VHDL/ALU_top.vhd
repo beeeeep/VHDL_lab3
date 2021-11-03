@@ -13,7 +13,8 @@ entity ALU_top is
           b_Sign     : in  std_logic;
           input      : in  std_logic_vector(7 downto 0);
           seven_seg  : out std_logic_vector(6 downto 0);
-          anode      : out std_logic_vector(3 downto 0)
+          anode      : out std_logic_vector(3 downto 0);
+          led       : out std_logic_vector(7 downto 0)
         );
 end ALU_top;
 
@@ -27,7 +28,8 @@ architecture structural of ALU_top is
              enter   : in  std_logic;
              sign    : in  std_logic;
              FN      : out std_logic_vector (3 downto 0);   -- ALU functions
-             RegCtrl : out std_logic_vector (1 downto 0)   -- Register update control bits
+             RegCtrl : out std_logic_vector (1 downto 0);   -- Register update control bits
+             led_out: out  std_logic_vector (7 downto 0)   -- Register update control bits
 	          );
     end component;
     
@@ -70,7 +72,6 @@ component binary2BCD is
    generic ( WIDTH : integer := 8   -- 8 bit binary to BCD
            );
    port ( 
-          clk       : in  std_logic;
           reset     : in  std_logic;
           binary_in : in  std_logic_vector(7 downto 0);  -- binary input width
           BCD_out   : out std_logic_vector(9 downto 0)        -- BCD output, 10 bits [2|4|4] to display a 3 digit BCD value when input has length 8
@@ -88,6 +89,7 @@ end component;
     signal DIGIT_ANODE : std_logic_vector(3 downto 0);
     signal SEGMENT : std_logic_vector(6 downto 0);
     signal BCD_out  :std_logic_vector(9 downto 0);
+
 begin
     ALU_ctrl_inst : ALU_ctrl
     port map (
@@ -96,7 +98,8 @@ begin
             enter   => b_Enter,
             sign   => b_Sign,
             FN      => FN,
-            RegCtrl =>RegCtrl
+            RegCtrl =>RegCtrl,
+            led_out=> led
 	     );
 	     
 	      regUpdate_inst : regUpdate
@@ -123,11 +126,12 @@ begin
 	     
 	     binary2BCD_inst : binary2BCD
     port map (
-			clk => clk,
 			reset => reset,
 			binary_in => result,
             BCD_out   => BCD_out
 	     );
+	     
+	     
 	     
 	     seven_seg_driver_inst : seven_seg_driver
     port map (

@@ -8,7 +8,8 @@ entity ALU_ctrl is
          enter   : in  std_logic;
          sign    : in  std_logic;
          FN      : out std_logic_vector (3 downto 0);   -- ALU functions
-         RegCtrl : out std_logic_vector (1 downto 0)   -- Register update control bits
+         RegCtrl : out std_logic_vector (1 downto 0);  -- Register update control bits
+         led_out : out  std_logic_vector (7 downto 0)   -- ALU functions
         );
 end ALU_ctrl;
 
@@ -21,6 +22,7 @@ architecture behavioral of ALU_ctrl is
              reset      : in  std_logic;
              button_in  : in  std_logic;
              button_out : out std_logic
+   
             );
     end component;
 
@@ -34,6 +36,8 @@ architecture behavioral of ALU_ctrl is
     signal FN_buffer    :std_logic_vector (3 downto 0);
     signal RegCtrl_next :std_logic_vector (1 downto 0);
     signal RegCtrl_buffer :std_logic_vector (1 downto 0);
+   signal led_out_next : std_logic_vector (7 downto 0);   -- ALU functions
+   signal led_out_buffer : std_logic_vector (7 downto 0);   -- ALU functions
 begin
 
   Debouncer_enter_inst: debouncer --Debounces enter button, enter_out is high for only 1 clock period, when button is pressed
@@ -54,43 +58,61 @@ begin
      );
 
 
-FN_stage_enter_presses_comb: process(sign_enabled,enter_out,FN_buffer,reset) -- FSM for FN selection
+FN_stage_enter_presses_comb: process(led_out_buffer,sign_enabled,enter_out,FN_buffer,reset) -- FSM for FN selection
         begin      
+        if reset='1' then
+        FN_next<="0010";
+        led_out_next<="00000001";
+        else
         if enter_out='1' then
             case FN_buffer(3 downto 0) is
                 when "0000" =>
                     FN_next<="0001";
+                    led_out_next<="00000011";
                 when "0001" =>
                     FN_next<="0010";
+                    led_out_next<="00000111";
                 when "0010" =>
                     FN_next<="0011";
+                    led_out_next<="00001111";
                 when "0011" =>
-                    FN_next<="0100";           
+                    FN_next<="0100";
+                    led_out_next<="00011111";           
                 when "0100" =>
                     if(sign_enabled='1') then --if signed mode is enabled allow the signed calculations to be selected
                         FN_next<="1010";
+                        led_out_next<="00111111";
                     else
                         FN_next<=(others => '0');
+                        led_out_next<="00000001";                       
                     end if;
                 when "1010" =>
                     if(sign_enabled='1') then --if signed mode is enabled allow the signed calculations to be selected
                         FN_next<="1011";
+                        led_out_next<="01111111";
                     else
                         FN_next<=(others => '0');
+                        led_out_next<="00000001";
                     end if;
                 when "1011" =>
                     if(sign_enabled='1') then --if signed mode is enabled allow the signed calculations to be selected
                         FN_next<="1100";
+                        led_out_next<="11111111";
                     else
                         FN_next<=(others => '0');
+                        led_out_next<="00000001";
                     end if;
                 when "1100" =>
                     FN_next<=(others => '0');
+                    led_out_next<="00000001";
                 when others    =>
                     FN_next<=(others => '0');
+                    led_out_next<="00000001";
             end case;
             else
-            FN_next<=FN_buffer;                 
+            FN_next<=FN_buffer;  
+            led_out_next<=led_out_buffer;               
+        end if;
         end if;
     end process;
     
@@ -108,19 +130,21 @@ FN_stage_enter_presses_comb: process(sign_enabled,enter_out,FN_buffer,reset) -- 
     
     
 
-  Set_FN_and_RegCtrl_seq: process(RegCtrl_next,FN_next,clk,reset) --FN buffer register
+  Set_FN_and_RegCtrl_seq: process(led_out_next,RegCtrl_next,FN_next,clk,reset) --FN buffer register
     begin
         if(reset= '1') then
             FN_buffer<=(others => '0');
             RegCtrl_buffer<=(others => '0');
+            led_out_buffer<=led_out_next;
         elsif (rising_edge(clk)) then
             FN_buffer<=FN_next;
+            led_out_buffer<=led_out_next;
             RegCtrl_buffer<=RegCtrl_next;
         end if;
     end process;
     FN<=FN_buffer; -- connect FN output with buffer
     RegCtrl<=RegCtrl_buffer;
-    
+    led_out<=led_out_buffer;
     
     
   Set_sign_seq: process(sign_enabled_next,clk,reset)  -- sign_enabled register
@@ -136,8 +160,10 @@ FN_stage_enter_presses_comb: process(sign_enabled,enter_out,FN_buffer,reset) -- 
     begin
         if(reset= '1') then
             sign_enabled_next<='0';
-        elsif (sign_out='1') then
-            sign_enabled_next<=NOT(sign_enabled);
+        elsif (sign_out='1' and sign_enabled='0') then
+            sign_enabled_next<='1';
+        elsif (sign_out='1' and sign_enabled='1') then
+         sign_enabled_next<='0';    
         else
             sign_enabled_next<=sign_enabled;
         end if;

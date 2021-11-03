@@ -8,7 +8,6 @@ entity binary2BCD is
     generic ( WIDTH : integer := 8   -- 8 bit binary to BCD
            );
     port (
-        clk       : in  std_logic;
         reset     : in  std_logic;
         binary_in : in  std_logic_vector(WIDTH-1 downto 0);  -- binary input width
         BCD_out   : out std_logic_vector(9 downto 0)        -- BCD output, 10 bits [2|4|4] to display a 3 digit BCD value when input has length 8

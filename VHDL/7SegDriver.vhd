@@ -19,7 +19,7 @@ architecture behavioral of seven_seg_driver is
 
     signal Seg_reg_0,Seg_reg_1,Seg_reg_2,Seg_reg_3:  std_logic_vector(6 downto 0);
     signal index,index_next:unsigned(1 downto 0);
-    signal counter_delay,counter_delay_next:unsigned(9 downto 0);
+    signal counter_delay,counter_delay_next:unsigned(10 downto 0);
 begin
 
     --/*******************************************************
@@ -122,7 +122,7 @@ begin
     begin
         if rising_edge(clk)then
             if(reset='1') then
-                counter_delay<="0000000000";
+                counter_delay<=(others => '0');
                 index<="00";
             else
                 counter_delay<=counter_delay_next;
@@ -146,48 +146,26 @@ begin
     Seg_driver: process(reset,overflow,index,Seg_reg_0,Seg_reg_1,Seg_reg_2,Seg_reg_3) -- scans each 7-seg display with a shift register, changes the code to display, according to the register enabled
     begin
        if(reset='1') then -- if overflow is detected, show dashes to all segments
-         DIGIT_ANODE <= "0000";
-         SEGMENT <= "0000000";
+         DIGIT_ANODE <= (others => '0');
+         SEGMENT <= (others => '0');
     
         elsif(overflow='1') then -- if overflow is detected, show dashes to all segments
-            DIGIT_ANODE <= "0000";
+            DIGIT_ANODE <= (others => '0');
             SEGMENT <= "1000000";
         else
             case index is
                 when "00" =>
-                --    if Seg_reg_0 = "0000000" then
-                ---        DIGIT_ANODE <= "1111";
-                --       SEGMENT<="1111111";
-                        
-                --    else
                         DIGIT_ANODE <= "0111";
                         SEGMENT <= Seg_reg_0;
-              --      end if;
                 when "01" =>
-                --    if Seg_reg_1 = "0000000" then
-                 --       DIGIT_ANODE <= "1111";
-                 --       SEGMENT<="1111111";
-                 --   else
                         DIGIT_ANODE <= "1011";
                         SEGMENT <= Seg_reg_1;
-
-                --    end if;
                 when "10" =>
-                 --   if Seg_reg_2 = "0000000" then
-                 ---       DIGIT_ANODE <= "1111";
-                 --       SEGMENT<="1111111";
-                 --   else
                         DIGIT_ANODE <= "1101";
                         SEGMENT <= Seg_reg_2;
-              --      end if;
-                when "11" =>
-               --     if Seg_reg_3 = "0000000" then
-               --         DIGIT_ANODE <= "1111";
-                --        SEGMENT<="1111111";
-                --    else
+                when "11" =>        
                         DIGIT_ANODE <= "1110";
-                        SEGMENT <= Seg_reg_3;
-               --     end if;
+                        SEGMENT <= Seg_reg_3;        
                 when others =>
                     DIGIT_ANODE <= "1111";
                     SEGMENT<="1111111";

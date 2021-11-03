@@ -3,10 +3,10 @@
 Jun 10 2021
 20:04:57
 C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/7SegDriver.vhd,1635721171,vhdl,,,,seven_seg_driver,,,,,,,,
-C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU.vhd,1635721052,vhdl,,,,alu,,,,,,,,
+C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU.vhd,1635942324,vhdl,,,,alu,,,,,,,,
 C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_components.vhd,1635716094,vhdl,C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_top.vhd,,,alu_components_pack,,,,,,,,
 C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_ctrl.vhd,1635720917,vhdl,,,,alu_ctrl,,,,,,,,
 C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/ALU_top.vhd,1635720961,vhdl,,,,alu_top,,,,,,,,
 C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/binary2BCD.vhd,1635717125,vhdl,,,,binary2bcd,,,,,,,,
 C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/regUpdate.vhd,1635463708,vhdl,,,,regupdate,,,,,,,,
-C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/tb_ALU.vhd,1635721038,vhdl,,,,tb_alu,,,,,,,,
+C:/Users/Anestman/Documents/VLSI_labs/project_3/VHDL/tb_ALU.vhd,1635943256,vhdl,,,,tb_alu,,,,,,,,

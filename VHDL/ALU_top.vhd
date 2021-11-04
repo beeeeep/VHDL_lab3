@@ -14,7 +14,7 @@ entity ALU_top is
           input      : in  std_logic_vector(7 downto 0);
           seven_seg  : out std_logic_vector(6 downto 0);
           anode      : out std_logic_vector(3 downto 0);
-          led       : out std_logic_vector(7 downto 0)
+          led       : out std_logic_vector(3 downto 0)
         );
 end ALU_top;
 
@@ -29,7 +29,7 @@ architecture structural of ALU_top is
              sign    : in  std_logic;
              FN      : out std_logic_vector (3 downto 0);   -- ALU functions
              RegCtrl : out std_logic_vector (1 downto 0);   -- Register update control bits
-             led_out: out  std_logic_vector (7 downto 0)   -- Register update control bits
+             led_out: out  std_logic_vector (3 downto 0)   -- Register update control bits
 	          );
     end component;
     

@@ -63,9 +63,11 @@ end debouncer;
 
 architecture behavioral of debouncer is
 
-   signal count      : unsigned(2 downto 0);  -- Range to count 20ms with 50 MHz clock
+   signal count      : unsigned(23 downto 0);  -- Range to count 20ms with 50 MHz clock
+   signal count_next      : unsigned(23 downto 0);  -- Range to count 20ms with 50 MHz clock
    signal button_tmp : std_logic;
-   signal button_previous : std_logic; 
+   signal last_button: std_logic;
+
 begin
 
 process ( clk )
@@ -73,18 +75,30 @@ begin
    if clk'event and clk = '1' then
       if reset = '1' then
          count <= (others => '0');
-      else
-         
-         button_tmp <= button_in;         
-         if (button_tmp='0' and button_in='1') then
-                button_out <= button_in;           
-         else
-         button_out <= '0';
+         button_out<='0';
+      else    
+         button_out<= button_tmp;          
+         count<=count_next;     
+         last_button<=button_in;
          end if;
       end if;
-  end if;
 end process;
 
+
+process(button_in,count,last_button)
+begin
+    
+    if (count=0 and last_button='0' and button_in='1') then -- if the delay has passed (count=0), and there is a rising edge on button
+         button_tmp <='1';    
+         count_next <= (others => '1');   --set the delay counter
+    elsif(count>to_unsigned(0,count'length)) then  --count delay time
+        count_next<=count-1;
+        button_tmp<='0';
+    else
+       button_tmp<='0'; 
+       count_next<=count;
+    end if;                       
+end process;
 
 
 

@@ -9,7 +9,7 @@ entity ALU_ctrl is
          sign    : in  std_logic;
          FN      : out std_logic_vector (3 downto 0);   -- ALU functions
          RegCtrl : out std_logic_vector (1 downto 0);  -- Register update control bits
-         led_out : out  std_logic_vector (7 downto 0)   -- ALU functions
+         led_out : out  std_logic_vector (3 downto 0)   -- ALU functions
         );
 end ALU_ctrl;
 
@@ -36,8 +36,8 @@ architecture behavioral of ALU_ctrl is
     signal FN_buffer    :std_logic_vector (3 downto 0);
     signal RegCtrl_next :std_logic_vector (1 downto 0);
     signal RegCtrl_buffer :std_logic_vector (1 downto 0);
-   signal led_out_next : std_logic_vector (7 downto 0);   -- ALU functions
-   signal led_out_buffer : std_logic_vector (7 downto 0);   -- ALU functions
+   signal led_out_next : std_logic_vector (3 downto 0);   -- ALU functions
+   signal led_out_buffer : std_logic_vector (3 downto 0);   -- ALU functions
 begin
 
   Debouncer_enter_inst: debouncer --Debounces enter button, enter_out is high for only 1 clock period, when button is pressed
@@ -61,60 +61,57 @@ begin
 FN_stage_enter_presses_comb: process(led_out_buffer,sign_enabled,enter_out,FN_buffer,reset) -- FSM for FN selection
         begin      
         if reset='1' then
-        FN_next<="0010";
-        led_out_next<="00000001";
-        else
-        if enter_out='1' then
-            case FN_buffer(3 downto 0) is
+            FN_next<="0000";
+            led_out_next<="0000";
+      
+        else    
+           if (enter_out='1') then
+                case FN_buffer(3 downto 0) is
                 when "0000" =>
                     FN_next<="0001";
-                    led_out_next<="00000011";
+                    led_out_next<="0001";
                 when "0001" =>
-                    FN_next<="0010";
-                    led_out_next<="00000111";
-                when "0010" =>
-                    FN_next<="0011";
-                    led_out_next<="00001111";
-                when "0011" =>
-                    FN_next<="0100";
-                    led_out_next<="00011111";           
+                       FN_next<="0010";
+                       led_out_next<="0010";
+                when "0010" =>          
+                       FN_next<="0011";                  
+                        led_out_next<="0011";    
+                when "0011" =>                
+                       FN_next<="0100";
+                       led_out_next<="0100";           
                 when "0100" =>
-                    if(sign_enabled='1') then --if signed mode is enabled allow the signed calculations to be selected
-                        FN_next<="1010";
-                        led_out_next<="00111111";
-                    else
-                        FN_next<=(others => '0');
-                        led_out_next<="00000001";                       
-                    end if;
+                       FN_next<="0010";
+                       led_out_next<="0010";           
+               
+                when "1000" =>
+                       FN_next<="1001";
+                       led_out_next<="1001";
+                when "1001" =>
+                       FN_next<="1010";
+                       led_out_next<="1010";                        
+               
                 when "1010" =>
-                    if(sign_enabled='1') then --if signed mode is enabled allow the signed calculations to be selected
-                        FN_next<="1011";
-                        led_out_next<="01111111";
-                    else
-                        FN_next<=(others => '0');
-                        led_out_next<="00000001";
-                    end if;
+                       FN_next<="1011";
+                       led_out_next<="1011";   
                 when "1011" =>
-                    if(sign_enabled='1') then --if signed mode is enabled allow the signed calculations to be selected
-                        FN_next<="1100";
-                        led_out_next<="11111111";
-                    else
-                        FN_next<=(others => '0');
-                        led_out_next<="00000001";
-                    end if;
+                       FN_next<="1100";
+                       led_out_next<="1100";
                 when "1100" =>
-                    FN_next<=(others => '0');
-                    led_out_next<="00000001";
-                when others    =>
-                    FN_next<=(others => '0');
-                    led_out_next<="00000001";
-            end case;
-            else
-            FN_next<=FN_buffer;  
-            led_out_next<=led_out_buffer;               
-        end if;
-        end if;
-    end process;
+                       FN_next<="1010";
+                       led_out_next<="1010";                                                                                     
+                when others=>
+                       FN_next<=(others => '0');
+                       led_out_next<="0000";
+                end case;
+            else   
+                    FN_next<=sign_enabled & FN_buffer(2 downto 0);
+                    led_out_next<=sign_enabled &  led_out_buffer(2 downto 0);     
+              end if;
+         end if;  
+end process;
+    
+    
+    
     
   RegCtrl_comb: process(FN_buffer,reset) -- FSM for   RegCtrl selection
     begin       
@@ -123,7 +120,11 @@ FN_stage_enter_presses_comb: process(led_out_buffer,sign_enabled,enter_out,FN_bu
                       RegCtrl_next<="01";
                   when "0001" =>
                       RegCtrl_next<="10";
-                     when others    => 
+                  when "1000" =>
+                       RegCtrl_next<="01";
+                  when "1001" =>
+                       RegCtrl_next<="10";   
+                  when others    => 
                       RegCtrl_next<="00";     
      end case;
     end process;  

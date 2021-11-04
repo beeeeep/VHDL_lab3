@@ -48,9 +48,7 @@ begin
                 overflow <= '0';
                 result<=A;
                 temp_Y <=(others => '0');
-                result <= (others => '0');
-                sign<= '0';          
-                    
+                sign<= '0';                
             when "0001" => --Load B
         
                 overflow <= '0';
@@ -86,7 +84,21 @@ begin
                 temp_Y <=(others => '0');
                 result <= mod_step7;
                 sign<= '0'; 
-                  
+            
+            when "1000" => --Load A signed
+                       
+                overflow <= '0';
+                temp_Y <=unsigned(A);
+                result<= std_logic_vector ('0' & temp_Y(6 downto 0));
+                sign<= temp_Y(7);                
+        
+            when "1001" => --Load Bsigned
+                    
+                overflow <= '0';
+               temp_Y <=unsigned(B);
+               result<= std_logic_vector ('0' & temp_Y(6 downto 0));
+               sign<= temp_Y(7);                 
+                              
            when "1010" => --Signed A+B
              
                 --If the sum of two same sign numbers yields a negative result, the sum has overflowed

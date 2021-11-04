@@ -52,28 +52,28 @@ end component;
     
 begin  -- structural
    
-   ALU_inst: ALU
-   port map (  
+--   ALU_inst: ALU
+--   port map (  
 
-              A         => A,
-              B         => B,
-              FN        => FN,
-              result    => test_nubmer,
-              sign      => sign,
-              overflow  => overflow
-            );
+--              A         => A,
+--              B         => B,
+--              FN        => FN,
+--              result    => test_nubmer,
+--              sign      => sign,
+--              overflow  => overflow
+--            );
 
---    ALU_top_inst: ALU_top
---        port map (
---            clk=>clk,
---            reset=>sys_rst,
---            b_Enter=>enter,
---            b_Sign=>sign,
---            input=>A,
---            seven_seg=>seven_seg_num,
---            anode=>tb_seg_en,
---            led=>led_out
---        );
+    ALU_top_inst: ALU_top
+        port map (
+            clk=>clk,
+            reset=>sys_rst,
+            b_Enter=>enter,
+            b_Sign=>sign,
+            input=>A,
+            seven_seg=>seven_seg_num,
+            anode=>tb_seg_en,
+            led=>led_out
+        );
 
 
 
@@ -101,21 +101,58 @@ begin  -- structural
 
 
 
---sign <= '0',                    -- B = 3
---'1' after 1 * period,   -- B = 3   
---'0' after 2 * period,   -- B = 145 
---'0' after 3 * period,   -- B = 124 
---'0' after 38 * period,   -- B = 249 
---'0' after 85 * period;   -- B = 105 
-
+sign <= '0',                    -- B = 3
+'1' after 1 * period,   -- B = 3   
+'0' after 2 * period,   -- B = 145 
+'1' after 3 * period,   -- B = 124 
+'0' after 38 * period,   -- B = 249 
+'0' after 85 * period,   -- B = 105 
+'1' after 40 * period,   -- B = 124 
+'0' after 42 * period,   -- B = 249 
+'0' after 46 * period;   -- B = 105 
 
 
 enter <= '1',                    -- B = 3
-'1' after 1 * period;   -- B = 3
---'0' after 2 * period,   -- B = 145
---'1' after 3 * period,   -- B = 124
---'0' after 4 * period,   -- B = 249
---'1' after 5 * period,   -- B = 10
+'1' after 1 * period,   -- B = 3
+'0' after 2 * period,   -- B = 145
+'1' after 3 * period,   -- B = 124
+'0' after 4 * period,   -- B = 249
+'1' after 5 * period,   -- B = 10
+'1' after 6 * period,   -- B = 124
+'0' after 7 * period,   -- B = 249
+'1' after 8 * period,   -- B = 10
+'1' after 9 * period,   -- B = 124
+'0' after 10 * period,   -- B = 249
+'1' after 11 * period,   -- B = 10
+'1' after 12 * period,   -- B = 124
+'0' after 13 * period,   -- B = 249
+'1' after 14 * period,   -- B = 10
+'1' after 15 * period,   -- B = 124
+'0' after 16 * period,   -- B = 249
+'1' after 17 * period,   -- B = 10
+'1' after 18 * period,   -- B = 124
+'0' after 19 * period,   -- B = 249
+'1' after 20 * period,   -- B = 10
+'1' after 21 * period,   -- B = 124
+'0' after 22 * period,   -- B = 249
+'1' after 23 * period,   -- B = 10
+'1' after 24 * period,   -- B = 124
+'0' after 25 * period,   -- B = 249
+'1' after 26 * period, -- B = 10
+'1' after 30 * period,   -- B = 10
+'1' after 40 * period,   -- B = 124
+'0' after 50 * period,   -- B = 249
+'1' after 60 * period,   -- B = 10
+'0' after 70 * period,   -- B = 249
+'1' after 80 * period,   -- B = 10
+'0' after 90 * period,   -- B = 249
+'1' after 100 * period,   -- B = 10
+'0' after 110 * period,   -- B = 249
+'1' after 120 * period,   -- B = 10
+'0' after 130 * period,   -- B = 249
+'1' after 140 * period,   -- B = 10
+'0' after 150 * period,   -- B = 249
+'1' after 160 * period;   -- B = 10
    -- User test data pattern
    -- *************************
    
@@ -141,20 +178,20 @@ enter <= '1',                    -- B = 3
 --        "00101101" after 8 * period,   -- B = 45
 --        "00100100" after 9 * period;   -- B = 36
      
-   FN <= "0000",                              -- Pass A
-         "0001" after 4 * period,                                     -- Pass A   
-         "0010" after 6 * period,             -- Pass B
-         "0011" after 7 * period,             -- Pass A
-         "0100" after 8 * period,             -- Pass B
-         "1100" after 10 * period,             -- Pass unsigned A + B
-         "1010" after 14 * period,             -- Pass unsigned A - B  
-         "1011" after 16 * period,             -- Pass unsigned A - B
-         "1100" after 18 * period,             -- Pass unsigned A + B
-         "1100" after 20 * period,             -- Pass unsigned A - B
-         "1100" after 22 * period,             -- Pass unsigned max(A, B)
-         "1100" after 24 * period,            -- Pass signed A + B
-         "1100" after 26 * period,            -- Pass signed A - B
-         "1100" after 28 * period,            -- Pass signed max(A, B)
-         "1111" after 30 * period;            -- Invalid input command
+--   FN <= "0000",                              -- Pass A
+--         "0001" after 4 * period,                                     -- Pass A   
+--         "0010" after 6 * period,             -- Pass B
+--         "0011" after 7 * period,             -- Pass A
+--         "0100" after 8 * period,             -- Pass B
+--         "1100" after 10 * period,             -- Pass unsigned A + B
+--         "1010" after 14 * period,             -- Pass unsigned A - B  
+--         "1011" after 16 * period,             -- Pass unsigned A - B
+--         "1100" after 18 * period,             -- Pass unsigned A + B
+--         "1100" after 20 * period,             -- Pass unsigned A - B
+--         "1100" after 22 * period,             -- Pass unsigned max(A, B)
+--         "1100" after 24 * period,            -- Pass signed A + B
+--         "1100" after 26 * period,            -- Pass signed A - B
+--         "1100" after 28 * period,            -- Pass signed max(A, B)
+--         "1111" after 30 * period;            -- Invalid input command
 
 end structural;

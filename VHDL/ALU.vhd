@@ -89,52 +89,63 @@ begin
                        
                 overflow <= '0';
                 temp_Y <=unsigned(A);
-                result<= std_logic_vector ('0' & temp_Y(6 downto 0));
-                sign<= temp_Y(7);                
-        
+                
+                if(temp_Y(7)='1')   then        
+                    result<= std_logic_vector (not(temp_Y)+1);
+                else
+                     result<= std_logic_vector (temp_Y);                   
+                end if;
+                sign<= temp_Y(7); 
             when "1001" => --Load Bsigned
                     
                 overflow <= '0';
                temp_Y <=unsigned(B);
-               result<= std_logic_vector ('0' & temp_Y(6 downto 0));
+               if(temp_Y(7)='1')   then        
+                   result<= std_logic_vector (not(temp_Y)+1);
+               else
+                   result<= std_logic_vector (temp_Y);
+               end if;     
                sign<= temp_Y(7);                 
-                              
+                            
            when "1010" => --Signed A+B
              
                 --If the sum of two same sign numbers yields a negative result, the sum has overflowed
                 --XNOR checks if A B have the same, AND checks if that sign is negative
                 
-                overflow <= (A(7) xnor B(7)) and (temp_Y(7) and '1');
+                overflow <= (A(7) xnor B(7)) and (temp_Y(7) xor A(7));
 
-                if (A(7)= '1' and B (7)='1' ) then  --if both numbers are negative    
+                if (A(7)= '1' and B (7)='1' ) then  --if both numbers are negative    -A-B
                   
                    temp_Y <= unsigned(A) + unsigned(B);
-                   result<=std_logic_vector(temp_Y);
+                   result<=std_logic_vector(not(temp_Y)+1);
                    sign<='1';                                        
                
-                elsif (A(7)= '1' and B (7)='0' ) then  -- if A is negative and B is positive                 
-                    temp_Y<=unsigned(B)+unsigned(not(A))+1;
-                    result<=std_logic_vector('0' & temp_Y(6 downto 0));
-                    if(unsigned(B)>(unsigned(not('0' & (A(6 downto 0))))+1)) then
-                        sign<='1';
-                    else
-                         sign<='0';
-                    end if;    
-                elsif (A(7)= '0' and B (7)='0' ) then -- if both A and B are positive
-                    
+                elsif (A(7)= '1' and B (7)='0' ) then  -- if A is negative and B is positive -A+B                
+                   
                     temp_Y<=unsigned(A)+unsigned(B);
-                    result<=std_logic_vector(temp_Y);
-                    sign<='0';
-                 
-                elsif (A(7)= '0' and B (7)='1' ) then -- if A is positive and B is negative
+                    if(temp_Y(7)='1') then
+                        result<=std_logic_vector(not(temp_Y)+1);            
+                      else
+                       result<=std_logic_vector(temp_Y);    
+                    end if;             
+                    sign<=temp_Y(7);
+                    
+                elsif (A(7)= '0' and B (7)='1' ) then -- if A is positive and B is negative A-B
                 
-                    temp_Y<=unsigned(B)+unsigned(not(A))+1;
-                    result<=std_logic_vector('0' & temp_Y(6 downto 0));
-                    if(unsigned(B)<(unsigned(not('0' & (A(6 downto 0))))+1)) then
-                        sign<='1';
+                    temp_Y<=unsigned(A)+unsigned(B);
+                    if(temp_Y(7)='1') then
+                      result<=std_logic_vector(not(temp_Y)+1);            
                     else
-                        sign<='0';
-                    end if;  
+                      result<=std_logic_vector(temp_Y);    
+                    end if;             
+                      sign<=temp_Y(7);  
+
+                 elsif (A(7)= '0' and B (7)='0' ) then -- if both numbers are positive    A+B
+                                   
+                  temp_Y<=unsigned(A)+unsigned(B);
+                  result<=std_logic_vector(temp_Y);          
+                  sign<=temp_Y(7);
+
                 else
                   sign<='0';
                   result<=(others => '0');
@@ -144,38 +155,48 @@ begin
             when "1011" =>  --Signed A-B            
                 --If the sum of two same sign numbers yields a negative result, the sum has overflowed
                 --XNOR checks if A B have the same, AND checks if that sign is negative
-                overflow <= (A(7) xor B(7)) and (temp_Y(7) and '1');
+                overflow <= (A(7) xnor B(7)) and (temp_Y(7) xor A(7));
             
-                if (A(7)= '1' and B (7)='1' ) then --  if A is negative and B is negative -A-(-B)=-A+B
+                if (A(7)= '1' and B (7)='1' ) then --  if A is negative and B is negative -A-(-B)= -A+B
                  
-                    temp_Y<=unsigned(B)+unsigned(not(A))+1;
-                    result<=std_logic_vector('0' & temp_Y(6 downto 0));                
-                   
-                    if(unsigned(B)>(unsigned(not('0' & (A(6 downto 0))))+1)) then
-                        sign<='1';
-                    else
-                        sign<='0';             
-                    end if;
+                  temp_Y<=unsigned(A)+ not(unsigned(B))+1;
+                  if(temp_Y(7)='1') then
+                     result<=std_logic_vector(not(temp_Y)+1);            
+                  else
+                     result<=std_logic_vector(temp_Y);    
+                  end if;             
+                  sign<=temp_Y(7);
                     
                 elsif (A(7)= '1' and B (7)='0' ) then --  if A is negative and B is positive -A-B
-                     temp_Y <= unsigned(A) + unsigned(B);
-                     result<=std_logic_vector('0' & temp_Y(6 downto 0));
-                     sign<='1';
+                                                             
+                   temp_Y <= unsigned(A) + not(unsigned(B))+1;
+                     if(temp_Y(7)='1') then
+                      result<=std_logic_vector(not(temp_Y)+1);            
+                      else
+                      result<=std_logic_vector(temp_Y);    
+                      end if;             
+                      sign<=temp_Y(7); 
                 elsif (A(7)= '0' and B (7)='0' )then -- if both are positive A-B
-                    temp_Y<=unsigned(B)+unsigned(not('0' & (A(6 downto 0))))+1;
-                    result<=std_logic_vector('0' & temp_Y(6 downto 0));
-                    if(unsigned(B)<(unsigned(not('0' & (A(6 downto 0))))+1)) then
-                        sign<='1';
+                               
+                     temp_Y<=unsigned(A)+ not(unsigned(B))+1;
+                  
+                     if(temp_Y(7)='1') then
+                      result<=std_logic_vector(not(temp_Y)+1);            
+                     else
+                       result<=std_logic_vector(temp_Y);    
+                     end if;             
+                      sign<=temp_Y(7);  
+            
+                elsif(A(7)= '0' and B (7)='1' ) then --  if A is positve and B is negative A+B             
+                    temp_Y<=unsigned(A)+not(unsigned(B))+1;
+                    result<=std_logic_vector(temp_Y);          
+                    if(temp_Y(7)='1') then
+                      result<=std_logic_vector(not(temp_Y)+1);            
                     else
-                        sign<='0';
-                    end if;
-                elsif(A(7)= '0' and B (7)='1' ) then --  if A is positve and B is negative A+B
-                     temp_Y<=unsigned('0' & (A(6 downto 0)))+unsigned('0' & (B(6 downto 0)));
-                     result<=std_logic_vector(temp_Y);
-                     sign<='0';              
+                      result<=std_logic_vector(temp_Y);    
+                    end if;             
+                    sign<=temp_Y(7);     
                else 
-                 
-                   
                    result<=(others => '0');
                    temp_Y <=(others => '0');  
                    sign<='0'; 
